@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>前端知识点 check list</title>
+    <url>/web.html</url>
+    <content><![CDATA[<h2 id="Don’t-be-anxious-just-do-it"><a href="#Don’t-be-anxious-just-do-it" class="headerlink" title="Don’t be anxious, just do it."></a>Don’t be anxious, just do it.</h2><!--  -->
+<a id="more"></a>
+
+<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ol>
+<li><input checked disabled type="checkbox"> <a href="/cache.html">浏览器缓存</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3152193188.html">性能优化 地址栏输完 url， 回车之后，浏览器做了哪些工作</a></li>
+<li><input checked disabled type="checkbox"> <a href="/1405041715.html">JS数据类型 基本数据类型和复杂类型的区别</a></li>
+<li><input checked disabled type="checkbox"> <a href="/prototype.html">js prototype的理解</a></li>
+<li><input checked disabled type="checkbox"> <a href="/proto.html">js 中<code>__proto__</code>和 <code>prototype</code> 的区别和关系</a></li>
+<li><input checked disabled type="checkbox"> <a href="/isArray.html">判断变量是数组的方法</a></li>
+<li><input checked disabled type="checkbox"> <a href="/1015335320.html">原型与原型链</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3315289936.html">new 一个对象的过程</a></li>
+<li><input checked disabled type="checkbox"> <a href="/1882318475.html">JS 函数实参转换为数组</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3369490582.html">typeof instanceof 底层原理实现</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3915840815.html">this指向,箭头函数特点</a><!-- 12. [ ] call apply bind 的区别 bind方法的实现 --></li>
+<li>事件轮询, promise, async await</li>
+<li><input disabled type="checkbox"> Promisetry产生的初衷 可以用catch吗 <a href="https://segmentfault.com/a/1190000018586947" target="_blank" rel="noopener">什么是Promise.try</a></li>
+<li>script 标签 defer async</li>
+<li>axois实现原理</li>
+<li>对象、数组、map、set，等遍历的方法，分别怎么用的，什么原理（想要for of能遍历原型上的东西，可以用iterator）</li>
+<li>跨域以及使用cors浏览器需要做什么处理  为什么要跨域，为什么要有事件轮询的机制  限制了什么，主要是限制cookie</li>
+<li>各种继承方案（主要是红宝书里的）</li>
+<li>三次握手，四次挥手详细了解，对https的了解</li>
+<li>cookie和session区别（cookie的数据是服务端返回后通过什么存到浏览器的，然后跨域会到服务器么，（分两个阶段）， cookie知多少包括用法，特性，domain和基本封装）</li>
+<li>防止js攻击，xss crfs知多少</li>
+<li>预编译以及变量声明提升函数提升等</li>
+<li>Websocket</li>
+<li>对浏览器兼容性的理解和方法或者做过哪些兼容性处理</li>
+<li>正则表达式匹配（转换时间，验证手机号等）</li>
+<li><input disabled type="checkbox"> symbol作用</li>
+<li><input disabled type="checkbox"> es5和es6区别</li>
+<li><input disabled type="checkbox"> es5实现es6的class</li>
+</ol>
+<h3 id="JS-算法"><a href="#JS-算法" class="headerlink" title="JS 算法"></a>JS 算法</h3><ol>
+<li><input disabled type="checkbox"> 数据去重</li>
+<li><input disabled type="checkbox"> 去掉首尾空格</li>
+<li><input disabled type="checkbox"> 排序</li>
+<li><input disabled type="checkbox"> 深度拷贝</li>
+<li><input disabled type="checkbox"> 斐波那契数列求和</li>
+<li><input disabled type="checkbox"> js操tabletable作并对排序</li>
+<li><input disabled type="checkbox"> 找出所有乘数</li>
+</ol>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
+<li><input disabled type="checkbox"> flex(需要详细说明每个属性),flex1是什么</li>
+<li><input disabled type="checkbox"> positionsticky</li>
+<li><input disabled type="checkbox"> 盒模型</li>
+<li><input disabled type="checkbox"> 百分比和vh的区别，height 100%和100vh的区别</li>
+<li><input disabled type="checkbox"> em,rem计算</li>
+<li><input disabled type="checkbox"> 垂直居中方式</li>
+<li><input disabled type="checkbox"> BFC相关知识</li>
+<li><input disabled type="checkbox"> 重排触发重新绘制的原理</li>
+<li><input disabled type="checkbox"> 节流防抖实现</li>
+</ol>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><ol>
+<li><input disabled type="checkbox"> 做过和哪些回流和重绘相关的优化</li>
+<li><input disabled type="checkbox"> 虚拟dom的diff</li>
+<li><input disabled type="checkbox"> useEffect</li>
+<li><input disabled type="checkbox"> hook</li>
+<li><input disabled type="checkbox"> 新的声明周期</li>
+<li><input disabled type="checkbox"> immutablereselect和有什么好处</li>
+<li><input disabled type="checkbox"> 生命周期hook</li>
+<li><input disabled type="checkbox"> react列表key</li>
+</ol>
+<h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><ol>
+<li><input disabled type="checkbox"> vue双向绑定的原理（vue答双向绑定的时候结合一些complie和watcher等流程答）（complie编译器编译的都是哪些东西，怎么抄编译的，把什么编译成什么）</li>
+<li><input disabled type="checkbox"> 实现一个vue底层的简单监听函数，就是实现订阅者发布者模式</li>
+<li><input disabled type="checkbox"> vue父子组件传值（多种方式）以及vuex</li>
+<li><input disabled type="checkbox"> vue生命周期及每阶段都能做什么（vue父子组件嵌套生命周期的顺序）</li>
+<li><input disabled type="checkbox"> vue router跳转的原理（刷新不刷新）</li>
+<li><input disabled type="checkbox"> vue的高级用法</li>
+<li><input disabled type="checkbox"> vuex是否是持久化的，持久化是需要结合本地缓存么</li>
+<li><input disabled type="checkbox"> seo渲染是在服务器端的，会出现白屏情况，vue渲染是会先加载结构的，慢慢渲染</li>
+<li><input disabled type="checkbox"> vue兼容性（2.0版本）（ie9以下不兼容因为object.defineProperty的兼容性）</li>
+<li><input disabled type="checkbox"> vue源码知多少</li>
+<li><input disabled type="checkbox"> jquery和vue区别和react的区别，mvc和mvvm框架区别，模块化那些区别</li>
+<li><input disabled type="checkbox"> props穿的数据和data里数据的区别</li>
+<li><input disabled type="checkbox"> Vue首次渲染页面时触发了哪些生命周期，props传数据时又触发了哪些生命周期</li>
+<li><input disabled type="checkbox"> vuex的api可以set（也能实现数据劫持），v-html，v-for, v-if同时用会怎么样，v-once，插槽等</li>
+</ol>
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><ol>
+<li><input disabled type="checkbox"> 做过哪些优化</li>
+<li>手写一个尽量多功能的webpack（快手问的QAQ）</li>
+</ol>
+<h3 id="h5"><a href="#h5" class="headerlink" title="h5"></a>h5</h3><ol>
+<li><input disabled type="checkbox"> 项目遇到的问题及解决方式</li>
+</ol>
+<h3 id="Ts"><a href="#Ts" class="headerlink" title="Ts"></a>Ts</h3><ol>
+<li><input disabled type="checkbox"> 为什么要是用Ts</li>
+</ol>
+<h3 id="开放题"><a href="#开放题" class="headerlink" title="开放题"></a>开放题</h3><ol>
+<li><input disabled type="checkbox"> 如何设计组件table或UI</li>
+</ol>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
+<li><input disabled type="checkbox"> IndexDB</li>
+<li><input disabled type="checkbox"> 数据库选型</li>
+<li><input disabled type="checkbox"> link用法原理能干啥与@import区别等</li>
+<li><input disabled type="checkbox"> 浏览器几个标签页之间怎么传递数据</li>
+<li><input disabled type="checkbox"> Flutter</li>
+<li><a href="/1508208186.html">nginx 常用配置</a></li>
+</ol>
+<p>### </p>
+<h4 id="js-异步编程"><a href="#js-异步编程" class="headerlink" title="js 异步编程"></a>js 异步编程</h4><ol>
+<li>回调</li>
+<li>事件监听</li>
+<li>发布/订阅</li>
+<li>promise</li>
+<li>generator yield;</li>
+<li>async wait (终级方法)</li>
+</ol>
+<h4 id="promise-使用以及实现"><a href="#promise-使用以及实现" class="headerlink" title="promise 使用以及实现"></a>promise 使用以及实现</h4><p>击鼓传花， 每隔n出列一个人，求最后那个<br>mobox原理<br>node使用场景</p>
+<p>柯理化实现<br>两个数组求交集</p>
+<p>合并两个有序数组为一个有序数组<br>无序数组中的最大数和第二大数</p>
+<p>Vue如何实现双向绑定<br>template模版编译过程<br>vue router 实现原理<br>navigator 实现原理</p>
+<p>webpack 源码分析<br>https原理和tcp协议原理<br>http缓存问题</p>
+<p>vuex的设计模式</p>
+<p>深拷贝<br>数组去重<br>如何快速创建一个长度为100数值为1的数组<br>node next<br>盒子模型<br>垂直居中<br>flex布局跟浮动布局<br>排序算法<br>判断对象和数组</p>
+]]></content>
+      <categories>
+        <category>前端基础</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue常见API原理分析</title>
     <url>/3258801602.html</url>
     <content><![CDATA[<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><a id="more"></a>
@@ -186,7 +313,7 @@
 <h3 id="3-快速排序"><a href="#3-快速排序" class="headerlink" title="3. 快速排序"></a>3. 快速排序</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> pivotIdx = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> pivot = arr.splice(pivotIdx, <span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> left = []</span><br><span class="line">  <span class="keyword">var</span> right = []</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt; arr.length; index++) &#123;</span><br><span class="line">    <span class="keyword">const</span> element = arr[index]</span><br><span class="line">    <span class="keyword">if</span> (element &lt; pivot) &#123;</span><br><span class="line">      left.push(element)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      right.push(element)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> quickSort(left).concat([pivot], quickSort(right))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(quickSort([<span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>, <span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-实现一个-calc-方法"><a href="#4-实现一个-calc-方法" class="headerlink" title="4. 实现一个 calc 方法"></a>4. 实现一个 calc 方法</h3><p>可以将输入的数拆解为尽可能多的乘数，所有数相乘等于输入数。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; num 乘积</span></span><br><span class="line"><span class="comment"> * @return &#123;Array&#125; 拆解后的乘数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// function calc(num) &#123;</span></span><br><span class="line"><span class="comment">//     function calc(num) &#123;</span></span><br><span class="line"><span class="comment">//         const arr = [];</span></span><br><span class="line"><span class="comment">//         var i = 2;</span></span><br><span class="line"><span class="comment">//         while (i &lt;= num) &#123;</span></span><br><span class="line"><span class="comment">//             if (num % i === 0) &#123;</span></span><br><span class="line"><span class="comment">//                 arr.push(i);</span></span><br><span class="line"><span class="comment">//                 num = num / i;</span></span><br><span class="line"><span class="comment">//             &#125; else &#123;</span></span><br><span class="line"><span class="comment">//                 i++;</span></span><br><span class="line"><span class="comment">//             &#125;</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//         return arr;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">Math</span>.sqrt(num); i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num % i == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calc</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> list = []</span><br><span class="line">  <span class="keyword">while</span> (n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isPrime(i) &amp;&amp; n % i === <span class="number">0</span>) &#123;</span><br><span class="line">        list.push(i)</span><br><span class="line">        n /= i</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> list</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>))</span><br><span class="line"><span class="comment">// [2]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">8</span>))</span><br><span class="line"><span class="comment">// [2, 2, 2]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">24</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// [2, 2, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">30</span>))</span><br><span class="line"><span class="comment">// [2, 3, 5]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> </span>num 乘积</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;Array&#125;</span> </span>拆解后的乘数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// function calc(num) &#123;</span></span><br><span class="line"><span class="comment">//     function calc(num) &#123;</span></span><br><span class="line"><span class="comment">//         const arr = [];</span></span><br><span class="line"><span class="comment">//         var i = 2;</span></span><br><span class="line"><span class="comment">//         while (i &lt;= num) &#123;</span></span><br><span class="line"><span class="comment">//             if (num % i === 0) &#123;</span></span><br><span class="line"><span class="comment">//                 arr.push(i);</span></span><br><span class="line"><span class="comment">//                 num = num / i;</span></span><br><span class="line"><span class="comment">//             &#125; else &#123;</span></span><br><span class="line"><span class="comment">//                 i++;</span></span><br><span class="line"><span class="comment">//             &#125;</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//         return arr;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">Math</span>.sqrt(num); i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num % i == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calc</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> list = []</span><br><span class="line">  <span class="keyword">while</span> (n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isPrime(i) &amp;&amp; n % i === <span class="number">0</span>) &#123;</span><br><span class="line">        list.push(i)</span><br><span class="line">        n /= i</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> list</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">2</span>))</span><br><span class="line"><span class="comment">// [2]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">8</span>))</span><br><span class="line"><span class="comment">// [2, 2, 2]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">24</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// [2, 2, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(calc(<span class="number">30</span>))</span><br><span class="line"><span class="comment">// [2, 3, 5]</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="5-多维数组扁平化"><a href="#5-多维数组扁平化" class="headerlink" title="5. 多维数组扁平化"></a>5. 多维数组扁平化</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatDeep</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.reduce(</span><br><span class="line">    (acc, curr) =&gt; (<span class="built_in">Array</span>.isArray(curr) ? acc.concat(flatDeep(curr)) : acc.concat(curr)),</span><br><span class="line">    []</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>], <span class="number">9</span>], <span class="number">10</span>]</span><br><span class="line"><span class="built_in">console</span>.log(flatDeep(a))</span><br></pre></td></tr></table></figure>
 
@@ -205,7 +332,7 @@
 <h3 id="10-实现一个-PromiseLinit"><a href="#10-实现一个-PromiseLinit" class="headerlink" title="10. 实现一个 PromiseLinit"></a>10. 实现一个 PromiseLinit</h3><p>根据 urls 数组内的 url 地址进行并发网络请求，最大并发数 maxNumber,当所有请求完毕后调用 callback 函数</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      resolve(<span class="string">'ok '</span> + url)</span><br><span class="line">    &#125;, <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">1000</span>) + <span class="number">600</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">PromiseLinit</span>(<span class="params">urls, limit, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = []</span><br><span class="line">  <span class="keyword">let</span> urlsLen = urls.length</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (i &lt; limit) &#123;</span><br><span class="line">    next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> current = i++</span><br><span class="line">    <span class="keyword">if</span> (current &gt;= urlsLen) &#123;</span><br><span class="line">      result.length === urlsLen &amp;&amp; callback(result)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;current + <span class="number">1</span>&#125;</span>开始`</span>)</span><br><span class="line">    fetch(urls[current])</span><br><span class="line">      .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;current + <span class="number">1</span>&#125;</span>成功结束`</span>)</span><br><span class="line">        result.push(res)</span><br><span class="line">        <span class="keyword">if</span> (current &lt; urlsLen) &#123;</span><br><span class="line">          next()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;current + <span class="number">1</span>&#125;</span>失败结束`</span>)</span><br><span class="line">        result.push(res)</span><br><span class="line">        <span class="keyword">if</span> (current &lt; urlsLen) &#123;</span><br><span class="line">          next()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> urls = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]</span><br><span class="line"></span><br><span class="line">PromiseLinit(urls, <span class="number">4</span>, (res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'success: '</span>, res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="11-求-left，-right-最终宽度"><a href="#11-求-left，-right-最终宽度" class="headerlink" title="11. 求 left， right 最终宽度"></a>11. 求 left， right 最终宽度</h3><h4 id="11-1-算收缩"><a href="#11-1-算收缩" class="headerlink" title="11.1 算收缩"></a>11.1 算收缩</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> &#123;</span></span><br><span class="line">      width: 600px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      display: flex;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line">      flex: 1 2 500px;</span><br><span class="line">      background: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line">      flex: 2 1 400px;</span><br><span class="line">      background: blue;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="11-求-left，-right-最终宽度"><a href="#11-求-left，-right-最终宽度" class="headerlink" title="11. 求 left， right 最终宽度"></a>11. 求 left， right 最终宽度</h3><h4 id="11-1-算收缩"><a href="#11-1-算收缩" class="headerlink" title="11.1 算收缩"></a>11.1 算收缩</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> &#123;</span></span><br><span class="line">      width: 600px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      display: flex;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line">      flex: 1 2 500px;</span><br><span class="line">      background: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line">      flex: 2 1 400px;</span><br><span class="line">      background: blue;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>子项的收缩宽度 = 子项收缩比例 X 溢出宽度<br>子项收缩比例 = 子项宽度 X 子项收缩系数 / 所有子项的(宽度 X 系数)之和</p>
@@ -214,7 +341,7 @@
 <p>子项溢出空间的宽度为 $500 + 400 - 600 = 300$<br>left 收缩比例：$(500 × 2) ÷ (500 × 2 + 400 × 1) ≈ 0.7143$<br>right 收缩比例：$(400 × 1) ÷ (500 × 2 + 400 × 1) ≈ 0.2857$<br>对应的：</p>
 <p>left 收缩宽度：$0.7143 × 300 = 214.29$<br>right 收缩宽度：$0.2857 × 300 = 85.71$<br>所以：</p>
 <p>left 最终宽度：$500 - 214.29 = 285.71$<br>right 最终宽度：$400 - 85.71 = 314.29$</p>
-<h4 id="11-2-算扩展"><a href="#11-2-算扩展" class="headerlink" title="11.2 算扩展"></a>11.2 算扩展</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> &#123;</span></span><br><span class="line">      width: 600px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      display: flex;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line">      flex: 1 2 300px;</span><br><span class="line">      background: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line">      flex: 2 1 200px;</span><br><span class="line">      background: blue;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="11-2-算扩展"><a href="#11-2-算扩展" class="headerlink" title="11.2 算扩展"></a>11.2 算扩展</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    * &#123;</span><br><span class="line">      padding: 0;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> &#123;</span></span><br><span class="line">      width: 600px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      display: flex;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line">      flex: 1 2 300px;</span><br><span class="line">      background: red;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line">      flex: 2 1 200px;</span><br><span class="line">      background: blue;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>left 最终宽度：300 + (1/3) _ (600 - (300 + 200)) = 333.33<br>right 最终宽度：200 + (2/3) _ (600 - (300 + 200)) = 266.66</p>
 <h3 id="12-实现一个-promise-all"><a href="#12-实现一个-promise-all" class="headerlink" title="12. 实现一个 promise.all"></a>12. 实现一个 promise.all</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 参数： 数组， 数项是promise返回执行结果， 如果不是， 直接返回</span></span><br><span class="line"><span class="comment">// 2. 返回值： Promise 对象</span></span><br><span class="line"><span class="comment">// 3. 如果数组里边有一个 Promise rejected 了， 直接返回 rejected</span></span><br><span class="line"><span class="comment">// 4. 当全部执行成功后， 返回一个有所有执行结果的数组</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPromise</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    obj &amp;&amp; (<span class="keyword">typeof</span> obj === <span class="string">'object'</span> || <span class="keyword">typeof</span> obj === <span class="string">'function'</span>) &amp;&amp; <span class="keyword">typeof</span> obj.then === <span class="string">'function'</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myPromiseAll</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> requests = []</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    arr.map(<span class="function">(<span class="params">item, idx</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (isPromise(item)) &#123;</span><br><span class="line">        item</span><br><span class="line">          .then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">            requests[idx] = result</span><br><span class="line">            <span class="keyword">if</span> (requests.length === arr.length) &#123;</span><br><span class="line">              resolve(requests)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">          .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">            reject(err)</span><br><span class="line">          &#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        requests[idx] = item</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">let</span> p2 = <span class="number">1337</span></span><br><span class="line"><span class="keyword">let</span> p3 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(resolve, <span class="number">100</span>, <span class="string">'foo'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">myPromiseAll([p1, p2, p3]).then(<span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(values) <span class="comment">// [3, 1337, "foo"]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -1708,133 +1835,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http://didiorg.com/thaiwooski.html</span><br></pre></td></tr></table></figure>
 
 ]]></content>
-  </entry>
-  <entry>
-    <title>前端知识点 check list</title>
-    <url>/web.html</url>
-    <content><![CDATA[<h2 id="Don’t-be-anxious-just-do-it"><a href="#Don’t-be-anxious-just-do-it" class="headerlink" title="Don’t be anxious, just do it."></a>Don’t be anxious, just do it.</h2><!--  -->
-<a id="more"></a>
-
-<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ol>
-<li><input checked disabled type="checkbox"> <a href="/cache.html">浏览器缓存</a></li>
-<li><input checked disabled type="checkbox"> <a href="/3152193188.html">性能优化 地址栏输完 url， 回车之后，浏览器做了哪些工作</a></li>
-<li><input checked disabled type="checkbox"> <a href="/1405041715.html">JS数据类型 基本数据类型和复杂类型的区别</a></li>
-<li><input checked disabled type="checkbox"> <a href="/prototype.html">js prototype的理解</a></li>
-<li><input checked disabled type="checkbox"> <a href="/proto.html">js 中<code>__proto__</code>和 <code>prototype</code> 的区别和关系</a></li>
-<li><input checked disabled type="checkbox"> <a href="/isArray.html">判断变量是数组的方法</a></li>
-<li><input checked disabled type="checkbox"> <a href="/1015335320.html">原型与原型链</a></li>
-<li><input checked disabled type="checkbox"> <a href="/3315289936.html">new 一个对象的过程</a></li>
-<li><input checked disabled type="checkbox"> <a href="/1882318475.html">JS 函数实参转换为数组</a></li>
-<li><input checked disabled type="checkbox"> <a href="/3369490582.html">typeof instanceof 底层原理实现</a></li>
-<li><input checked disabled type="checkbox"> <a href="/3915840815.html">this指向,箭头函数特点</a><!-- 12. [ ] call apply bind 的区别 bind方法的实现 --></li>
-<li>事件轮询, promise, async await</li>
-<li><input disabled type="checkbox"> Promisetry产生的初衷 可以用catch吗 <a href="https://segmentfault.com/a/1190000018586947" target="_blank" rel="noopener">什么是Promise.try</a></li>
-<li>script 标签 defer async</li>
-<li>axois实现原理</li>
-<li>对象、数组、map、set，等遍历的方法，分别怎么用的，什么原理（想要for of能遍历原型上的东西，可以用iterator）</li>
-<li>跨域以及使用cors浏览器需要做什么处理  为什么要跨域，为什么要有事件轮询的机制  限制了什么，主要是限制cookie</li>
-<li>各种继承方案（主要是红宝书里的）</li>
-<li>三次握手，四次挥手详细了解，对https的了解</li>
-<li>cookie和session区别（cookie的数据是服务端返回后通过什么存到浏览器的，然后跨域会到服务器么，（分两个阶段）， cookie知多少包括用法，特性，domain和基本封装）</li>
-<li>防止js攻击，xss crfs知多少</li>
-<li>预编译以及变量声明提升函数提升等</li>
-<li>Websocket</li>
-<li>对浏览器兼容性的理解和方法或者做过哪些兼容性处理</li>
-<li>正则表达式匹配（转换时间，验证手机号等）</li>
-<li><input disabled type="checkbox"> symbol作用</li>
-<li><input disabled type="checkbox"> es5和es6区别</li>
-<li><input disabled type="checkbox"> es5实现es6的class</li>
-</ol>
-<h3 id="JS-算法"><a href="#JS-算法" class="headerlink" title="JS 算法"></a>JS 算法</h3><ol>
-<li><input disabled type="checkbox"> 数据去重</li>
-<li><input disabled type="checkbox"> 去掉首尾空格</li>
-<li><input disabled type="checkbox"> 排序</li>
-<li><input disabled type="checkbox"> 深度拷贝</li>
-<li><input disabled type="checkbox"> 斐波那契数列求和</li>
-<li><input disabled type="checkbox"> js操tabletable作并对排序</li>
-<li><input disabled type="checkbox"> 找出所有乘数</li>
-</ol>
-<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
-<li><input disabled type="checkbox"> flex(需要详细说明每个属性),flex1是什么</li>
-<li><input disabled type="checkbox"> positionsticky</li>
-<li><input disabled type="checkbox"> 盒模型</li>
-<li><input disabled type="checkbox"> 百分比和vh的区别，height 100%和100vh的区别</li>
-<li><input disabled type="checkbox"> em,rem计算</li>
-<li><input disabled type="checkbox"> 垂直居中方式</li>
-<li><input disabled type="checkbox"> BFC相关知识</li>
-<li><input disabled type="checkbox"> 重排触发重新绘制的原理</li>
-<li><input disabled type="checkbox"> 节流防抖实现</li>
-</ol>
-<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><ol>
-<li><input disabled type="checkbox"> 做过和哪些回流和重绘相关的优化</li>
-<li><input disabled type="checkbox"> 虚拟dom的diff</li>
-<li><input disabled type="checkbox"> useEffect</li>
-<li><input disabled type="checkbox"> hook</li>
-<li><input disabled type="checkbox"> 新的声明周期</li>
-<li><input disabled type="checkbox"> immutablereselect和有什么好处</li>
-<li><input disabled type="checkbox"> 生命周期hook</li>
-<li><input disabled type="checkbox"> react列表key</li>
-</ol>
-<h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><ol>
-<li><input disabled type="checkbox"> vue双向绑定的原理（vue答双向绑定的时候结合一些complie和watcher等流程答）（complie编译器编译的都是哪些东西，怎么抄编译的，把什么编译成什么）</li>
-<li><input disabled type="checkbox"> 实现一个vue底层的简单监听函数，就是实现订阅者发布者模式</li>
-<li><input disabled type="checkbox"> vue父子组件传值（多种方式）以及vuex</li>
-<li><input disabled type="checkbox"> vue生命周期及每阶段都能做什么（vue父子组件嵌套生命周期的顺序）</li>
-<li><input disabled type="checkbox"> vue router跳转的原理（刷新不刷新）</li>
-<li><input disabled type="checkbox"> vue的高级用法</li>
-<li><input disabled type="checkbox"> vuex是否是持久化的，持久化是需要结合本地缓存么</li>
-<li><input disabled type="checkbox"> seo渲染是在服务器端的，会出现白屏情况，vue渲染是会先加载结构的，慢慢渲染</li>
-<li><input disabled type="checkbox"> vue兼容性（2.0版本）（ie9以下不兼容因为object.defineProperty的兼容性）</li>
-<li><input disabled type="checkbox"> vue源码知多少</li>
-<li><input disabled type="checkbox"> jquery和vue区别和react的区别，mvc和mvvm框架区别，模块化那些区别</li>
-<li><input disabled type="checkbox"> props穿的数据和data里数据的区别</li>
-<li><input disabled type="checkbox"> Vue首次渲染页面时触发了哪些生命周期，props传数据时又触发了哪些生命周期</li>
-<li><input disabled type="checkbox"> vuex的api可以set（也能实现数据劫持），v-html，v-for, v-if同时用会怎么样，v-once，插槽等</li>
-</ol>
-<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><ol>
-<li><input disabled type="checkbox"> 做过哪些优化</li>
-<li>手写一个尽量多功能的webpack（快手问的QAQ）</li>
-</ol>
-<h3 id="h5"><a href="#h5" class="headerlink" title="h5"></a>h5</h3><ol>
-<li><input disabled type="checkbox"> 项目遇到的问题及解决方式</li>
-</ol>
-<h3 id="Ts"><a href="#Ts" class="headerlink" title="Ts"></a>Ts</h3><ol>
-<li><input disabled type="checkbox"> 为什么要是用Ts</li>
-</ol>
-<h3 id="开放题"><a href="#开放题" class="headerlink" title="开放题"></a>开放题</h3><ol>
-<li><input disabled type="checkbox"> 如何设计组件table或UI</li>
-</ol>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
-<li><input disabled type="checkbox"> IndexDB</li>
-<li><input disabled type="checkbox"> 数据库选型</li>
-<li><input disabled type="checkbox"> link用法原理能干啥与@import区别等</li>
-<li><input disabled type="checkbox"> 浏览器几个标签页之间怎么传递数据</li>
-<li><input disabled type="checkbox"> Flutter</li>
-<li><a href="/1508208186.html">nginx 常用配置</a></li>
-</ol>
-<p>### </p>
-<h4 id="js-异步编程"><a href="#js-异步编程" class="headerlink" title="js 异步编程"></a>js 异步编程</h4><ol>
-<li>回调</li>
-<li>事件监听</li>
-<li>发布/订阅</li>
-<li>promise</li>
-<li>generator yield;</li>
-<li>async wait (终级方法)</li>
-</ol>
-<h4 id="promise-使用以及实现"><a href="#promise-使用以及实现" class="headerlink" title="promise 使用以及实现"></a>promise 使用以及实现</h4><p>击鼓传花， 每隔n出列一个人，求最后那个<br>mobox原理<br>node使用场景</p>
-<p>柯理化实现<br>两个数组求交集</p>
-<p>合并两个有序数组为一个有序数组<br>无序数组中的最大数和第二大数</p>
-<p>Vue如何实现双向绑定<br>template模版编译过程<br>vue router 实现原理<br>navigator 实现原理</p>
-<p>webpack 源码分析<br>https原理和tcp协议原理<br>http缓存问题</p>
-<p>vuex的设计模式</p>
-<p>深拷贝<br>数组去重<br>如何快速创建一个长度为100数值为1的数组<br>node next<br>盒子模型<br>垂直居中<br>flex布局跟浮动布局<br>排序算法<br>判断对象和数组</p>
-]]></content>
-      <categories>
-        <category>前端基础</category>
-      </categories>
-      <tags>
-        <tag>web</tag>
-      </tags>
   </entry>
   <entry>
     <title>崇礼太舞滑雪</title>
