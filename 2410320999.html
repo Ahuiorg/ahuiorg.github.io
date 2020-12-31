@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"didiorg.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1. new 的实现原理">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端进阶 精选20道面试题">
+<meta property="og:url" content="http://didiorg.com/2410320999.html">
+<meta property="og:site_name" content=".org Blog">
+<meta property="og:description" content="1. new 的实现原理">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-02T16:09:10.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端进阶 精选20道面试题">
+<meta name="twitter:description" content="1. new 的实现原理">
+
+<link rel="canonical" href="http://didiorg.com/2410320999.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端进阶 精选20道面试题 | .org Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title=".org Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">.org Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Penghui's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://didiorg.com/2410320999.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李鹏辉">
+      <meta itemprop="description" content="30岁才开始写的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content=".org Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端进阶 精选20道面试题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-07 14:43:51" itemprop="dateCreated datePublished" datetime="2020-03-07T14:43:51+08:00">2020-03-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端进阶/" itemprop="url" rel="index"><span itemprop="name">前端进阶</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-new-的实现原理"><a href="#1-new-的实现原理" class="headerlink" title="1. new 的实现原理"></a>1. new 的实现原理</h2><a id="more"></a>
+
+<ol>
+<li>新建一个空对象  let newObj = {}</li>
+<li>修改对象的原型: 把新对象的 <code>__proto__</code> 指向构造函数的 <code>prototype</code> 属性</li>
+<li>改变 this 指向，并执行</li>
+<li>返回对象里边的内容原来构造函数里边的内容<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">  <span class="comment">// 取第一个参数，第一参娄就是构造函数</span></span><br><span class="line">  <span class="keyword">let</span> [Constructor, ...args] = [...arguments];</span><br><span class="line">  obj.__proto__ = Constructor.prototype;</span><br><span class="line">  <span class="keyword">let</span> result = Constructor.apply(obj, args);</span><br><span class="line">  <span class="keyword">return</span> result === <span class="string">'object'</span> ? result : obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-如何正确判断一-this-指向"><a href="#2-如何正确判断一-this-指向" class="headerlink" title="2. 如何正确判断一 this 指向"></a>2. 如何正确判断一 this 指向</h2><p>分析好上下文：<strong>谁调用指向谁</strong></p>
+<p>分四种情况：new, 显示，隐式，默认</p>
+<p>参考这里： <a href="/3915840815.html">this指向</a></p>
+<h2 id="3-深拷贝和浅拷贝的区别是什么？-实现一个深拷贝"><a href="#3-深拷贝和浅拷贝的区别是什么？-实现一个深拷贝" class="headerlink" title="3. 深拷贝和浅拷贝的区别是什么？ 实现一个深拷贝"></a>3. 深拷贝和浅拷贝的区别是什么？ 实现一个深拷贝</h2><p>浅拷贝一般指用来拷贝栈内存上的东西，而深拷贝一般是指用来拷贝堆内存上的东西</p>
+<p>这是我个人的理解， 为啥这么说呢 ？ </p>
+<p>浅拷贝：创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址 ，所以如果其中一个对象改变了这个地址，就会影响到另一个对象。</p>
+<p>深拷贝：将一个对象从内存中完整的拷贝一份出来,从堆内存中开辟一个新的区域存放新对象,且修改新对象不会影响原对象</p>
+<p>之前有文章介绍过基本类型是存在栈内存上的，而引用类型来说，对象的属性是保存在栈内存中的，属性对应的值是保存在堆内存中的, 同时，栈内存上也保存着该属性的值所在的堆内存的地址。</p>
+<p>所以我们可以这样去理解，浅拷贝是栈内存上的拷贝，而深拷贝是堆内存上的拷贝.</p>
+<p>首先我们要明月一个前提：</p>
+<p><strong>只有对象里嵌套对象的情况下,才会根据需求讨论,我们要深拷贝还是浅拷贝。</strong></p>
+<p><strong>浅拷贝实现：</strong></p>
+<ol>
+<li><code>Oject.assign()</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ahui = &#123;</span><br><span class="line">  name: <span class="string">"ahui"</span>,</span><br><span class="line">  age: <span class="string">"18"</span>,</span><br><span class="line">  city: [<span class="string">"泰国"</span>,<span class="string">"新加坡"</span>,<span class="string">"印度尼西亚"</span>],</span><br><span class="line">  sayname: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">  &#125;,</span><br><span class="line">  saycity: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.city</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let angeli = Object.assign(&#123;&#125;, ahui) // 这样实现深拷贝</span></span><br><span class="line"><span class="keyword">let</span> angeli = <span class="built_in">Object</span>.assign(ahui, &#123;&#125;) <span class="comment">// 这样实现浅拷贝</span></span><br><span class="line"></span><br><span class="line">angeli.name = <span class="string">"angeli"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ahui.sayname()) <span class="comment">// angeli</span></span><br><span class="line"><span class="built_in">console</span>.log(angeli.sayname()) <span class="comment">// angeli</span></span><br><span class="line"></span><br><span class="line">angeli.city = [<span class="string">"深圳"</span>,<span class="string">"娄底"</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ahui.saycity()) <span class="comment">// ["深圳","娄底"]</span></span><br><span class="line"><span class="built_in">console</span>.log(angeli.saycity()) <span class="comment">// ["深圳","娄底"]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。<strong>它将返回目标对象。</strong></p>
+<p>关于 <code>Object.assign()</code>这个方法是深拷贝还是浅拷贝的时候，是分情况的。</p>
+<p>假如源对象的属性值是一个对象的引用，那么它也只指向那个引用。也就是说，如果对象的属性值为简单类型（如<code>string</code>， <code>number</code>），通过<code>Object.assign({},srcObj);</code>得到的新对象为深拷贝；如果属性值为对象或其它引用类型，那对于这个对象而言其实是浅拷贝的。</p>
+<p><strong>深拷贝实现</strong></p>
+<ol>
+<li>可以使用各种第三方的库， 我常用 <a href="https://www.lodashjs.com/docs/lodash.cloneDeep" target="_blank" rel="noopener">lodash 的 cloneDeep</a></li>
+<li>通过判断加递归实现深拷贝</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cloneDeep</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj === <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> tempObj = <span class="built_in">Array</span>.isArray(obj) ? [] : &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">      <span class="comment">// 意思就是__proto__上面的属性,我不拷贝</span></span><br><span class="line">      <span class="keyword">if</span> (obj.hasOwnProperty(key))  &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span>) &#123;</span><br><span class="line">          tempObj[key] = cloneDeep(obj[key])</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          tempObj[key] = obj[key]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> tempObj;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ahui = &#123;</span><br><span class="line">  name: <span class="string">"ahui"</span>,</span><br><span class="line">  age: <span class="string">"18"</span>,</span><br><span class="line">  city: [<span class="string">"泰国"</span>,<span class="string">"新加坡"</span>,<span class="string">"印度尼西亚"</span>],</span><br><span class="line">  sayname: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">  &#125;,</span><br><span class="line">  saycity: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.city</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> angeli = cloneDeep(ahui) <span class="comment">// 这样实现深拷贝</span></span><br><span class="line"></span><br><span class="line">angeli.name = <span class="string">"angeli"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ahui.sayname()) <span class="comment">// ahui</span></span><br><span class="line"><span class="built_in">console</span>.log(angeli.sayname()) <span class="comment">// angeli</span></span><br><span class="line"></span><br><span class="line">angeli.city = [<span class="string">"深圳"</span>,<span class="string">"娄底"</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ahui.saycity()) <span class="comment">// ["泰国","新加坡","印度尼西亚"]</span></span><br><span class="line"><span class="built_in">console</span>.log(angeli.saycity()) <span class="comment">// ["深圳","娄底"]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-call-apply的实现原理是什么？"><a href="#4-call-apply的实现原理是什么？" class="headerlink" title="4. call/apply的实现原理是什么？"></a>4. call/apply的实现原理是什么？</h2><p><code>call</code> 跟 <code>apply</code> 的功能是相同的，都是 改变 <code>this</code> 的执行，并立马执行函数。区别在于传参方式不同：</p>
+<blockquote>
+<p><code>func.call(thisArg,arg1,arg2,...)</code>：第一个参数是 <code>this</code> 指向的对象，其它参数依次传入。<br><code>func.apply(thisArg,[argsArray])</code>：第一个参数是 <code>this</code> 指向的对象，第二个参数是数组或类数组。</p>
+</blockquote>
+<p><strong><code>call</code></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先使用call 试一下</span></span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  name: <span class="string">"person"</span>,</span><br><span class="line">  sayname: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.sayname()) <span class="comment">// person</span></span><br><span class="line"><span class="keyword">let</span> ahui = &#123; <span class="attr">name</span>: <span class="string">"ahui"</span> &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(person.sayname.call(ahui)) <span class="comment">// ahui</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下边我们自己实现一个 call</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.imitateCall = <span class="function"><span class="keyword">function</span>(<span class="params">context = window</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这里的 this， 是指原来对象里的方法， 比如下边的 person.sayname</span></span><br><span class="line">  context.fn = <span class="keyword">this</span> </span><br><span class="line">  <span class="comment">// slice(start, end) 方法可从已有的数组中返回选定的元素。</span></span><br><span class="line">  <span class="keyword">let</span> args = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line">  <span class="comment">// 执行调用的函数， 比如下边的 sayname</span></span><br><span class="line">  <span class="keyword">let</span> result = context.fn(...args)</span><br><span class="line">  <span class="comment">// 删除函数调用，要不然会改变 context</span></span><br><span class="line">  <span class="keyword">delete</span> context.fn</span><br><span class="line">  <span class="comment">// 返回执行结果</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.sayname.imitateCall(ahui)) <span class="comment">// ahui</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 再试一下有参数的例子</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> Boy = <span class="function"><span class="keyword">function</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.sayInfo = <span class="function"><span class="keyword">function</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`my name is: <span class="subst">$&#123;name&#125;</span>, my age: <span class="subst">$&#123;age&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">angeli = <span class="keyword">new</span> Boy(<span class="string">"angeli"</span>, <span class="number">18</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(angeli.sayInfo(<span class="string">"angeli"</span>, <span class="number">18</span>)) <span class="comment">// 1 my name is: angeli, my age: 18</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> huihui = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(angeli.sayInfo.call(huihui, <span class="string">"huihui"</span>, <span class="number">28</span>)) <span class="comment">// 2 my name is: huihui, my age: 28</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(angeli.sayInfo.imitateCall(huihui, <span class="string">"pengpeng"</span>, <span class="number">38</span>)) <span class="comment">// 3 "my name is: pengpeng, my age: 38"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-柯里化函数实现"><a href="#5-柯里化函数实现" class="headerlink" title="5. 柯里化函数实现"></a>5. 柯里化函数实现</h2><p>函数柯里化是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这个东西的作用就是利用闭包函数的特性把每次执行之后的参数者保存好，再依次放入数组中</span></span><br><span class="line">  <span class="keyword">var</span> _adder = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    _args.push(...arguments);</span><br><span class="line">    <span class="keyword">return</span> _adder;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在 js 中，每次打印的时候，都会调用 toString 函数，所以，重写这里的 toSting 等函数执行完就会进行打印的时候， 就会调用里边的求和函数</span></span><br><span class="line">  <span class="comment">// reduce 方法的参数为函数，且不可以少； array.reduce(function(total, currentValue, currentIndex, arr), initialValue)</span></span><br><span class="line">  _adder.toString = <span class="function"><span class="params">()</span> =&gt;</span> _args.reduce(<span class="function">(<span class="params">total, num</span>) =&gt;</span> total + num)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这个 add 函数返回的是一个函数，这点很重要，因为 add() 后面还其它的(), 这个意思就是执行函数的意思</span></span><br><span class="line">  <span class="keyword">return</span> _adder;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-如何让-a-1-amp-amp-a-2-amp-amp-a-3-的值为-true"><a href="#6-如何让-a-1-amp-amp-a-2-amp-amp-a-3-的值为-true" class="headerlink" title="6. 如何让 (a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 的值为 true"></a>6. 如何让 <code>(a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3)</code> 的值为 true</h2><p><strong>== 运算符会进行隐式转换</strong></p>
+<p><strong>Object</strong></p>
+<p>==操作符会尝试通过方法valueOf和toString将对象转换为其原始值（一个字符串或数字类型的值）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">  i: <span class="number">1</span>,</span><br><span class="line">  <span class="comment">// toString: () =&gt; a.i ++,</span></span><br><span class="line">  valueOf: <span class="function"><span class="params">()</span> =&gt;</span> a.i ++,</span><br><span class="line">&#125;</span><br><span class="line">a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Array</strong><br>对于数组对象，toString 方法返回一个字符串，该字符串由数组中的每个元素的 toString() 返回值调用 join() 方法连接（由逗号隔开）组成。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">a.join = a.shift</span><br><span class="line">a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Symbol</strong><br>Symbol对象被转为原始类型的值时，会调用 toPrimitive 方法，返回该对象对应的原始类型值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">  [<span class="built_in">Symbol</span>.toPrimitive]: <span class="function">(<span class="params">i =&gt; (</span>) =&gt;</span> i++)(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Proxy</strong><br>利用数据支持 Proxy/Object.definedProperty</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Proxy</span>(&#123;&#125;, &#123;</span><br><span class="line">  i: <span class="number">1</span>,</span><br><span class="line">  <span class="keyword">get</span>: function() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.i++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">a == <span class="number">1</span> &amp;&amp; a == <span class="number">2</span> &amp;&amp; a == <span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="7-什么是-BFC-？-BFC-的布局规则是什么？如何创建-BFC-？"><a href="#7-什么是-BFC-？-BFC-的布局规则是什么？如何创建-BFC-？" class="headerlink" title="7. 什么是 BFC ？ BFC 的布局规则是什么？如何创建 BFC ？"></a>7. 什么是 BFC ？ BFC 的布局规则是什么？如何创建 BFC ？</h2><p>Box 是 CSS 布局的对象和基本单位，页面是由若干个Box组成的。</p>
+<p>元素的类型 和 display 属性，决定了这个 Box 的类型。不同类型的 Box 会参与不同的 Formatting Context。</p>
+<p>Formatting Context 是页面的一块渲染区域，并且有一套渲染规则，决定了其子元素将如何定位，以及和其它元素的关系和相互作用。</p>
+<p>Formatting Context 有 BFC (Block formatting context)，IFC (Inline formatting context)，FFC (Flex formatting context) 和 GFC (Grid formatting context)。FFC 和 GFC 为 CC3 中新增。</p>
+<p><strong>BFC 布局规则</strong></p>
+<ol>
+<li>BFC内，盒子依次垂直排列。</li>
+<li>BFC内，两个盒子的垂直距离由 margin 属性决定。属于同一个BFC的两个相邻Box的margin会发生重叠【符合合并原则的margin合并后是使用大的margin】</li>
+<li>BFC内，每个盒子的左外边缘接触内部盒子的左边缘（对于从右到左的格式，右边缘接触）。即使在存在浮动的情况下也是如此。除非创建新的BFC。</li>
+<li>BFC的区域不会与float box重叠。</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+<li>计算BFC的高度时，浮动元素也参与计算。</li>
+</ol>
+<p><strong>怎样建仓 BFC</strong></p>
+<ol>
+<li>根元素</li>
+<li>浮动元素（float 属性不为 none）</li>
+<li>position 为 absolute 或 fixed</li>
+<li>overflow 不为 visible 的块元素</li>
+<li>display 为 inline-block, table-cell, table-caption</li>
+</ol>
+<p><strong>BFC 的应用</strong></p>
+<ol>
+<li>防止 margin 重叠 (同一个BFC内的两个两个相邻Box的 margin 会发生重叠，触发生成两个BFC，即不会重叠)</li>
+<li>清除内部浮动 (创建一个新的 BFC，因为根据 BFC 的规则，计算 BFC 的高度时，浮动元素也参与计算)</li>
+<li>自适应多栏布局 (BFC的区域不会与float box重叠。因此，可以触发生成一个新的BFC)</li>
+</ol>
+<h2 id="8-异步加载JS脚本的方式有哪些"><a href="#8-异步加载JS脚本的方式有哪些" class="headerlink" title="8. 异步加载JS脚本的方式有哪些"></a>8. 异步加载JS脚本的方式有哪些</h2><ol>
+<li><p><code>&lt;script&gt;</code> 标签中增加 <code>async(html5)</code> 或者 <code>defer(html4)</code> 属性,脚本就会异步加载</p>
+<blockquote>
+<p>defer 和 async 的区别：</p>
+<ol>
+<li>defer 要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），在window.onload 之前执行；</li>
+<li>async 一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。</li>
+<li>如果有多个 defer 脚本，会按照它们在页面出现的顺序加载</li>
+<li>多个 async 脚本不能保证加载顺序</li>
+</ol>
+</blockquote>
+</li>
+<li><p>动态创建 <code>script</code> 标签</p>
+<blockquote>
+<p>动态创建的 <code>script</code> ，设置 <code>src</code> 并不会开始下载，而是要添加到文档中，JS文件才会开始下载。</p>
+</blockquote>
+</li>
+<li><p>XHR 异步加载JS</p>
+</li>
+</ol>
+<h2 id="9-ES5有几种方式可以实现继承？分别有哪些优缺点？"><a href="#9-ES5有几种方式可以实现继承？分别有哪些优缺点？" class="headerlink" title="9. ES5有几种方式可以实现继承？分别有哪些优缺点？"></a>9. ES5有几种方式可以实现继承？分别有哪些优缺点？</h2><p><strong>1. 原型链继承</strong></p>
+<p><strong>原型链实现继承的思想</strong>：利用原型让一个引用类型继承另一个引用类型的属性和方法。</p>
+<p><strong>原型链的基本概念</strong>：当一个原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个指向另一个原型的指针。同时，另一个原型中也包含着一个指向另一个构造函数的指针。如果另一个原型是另一个类型的实例，此时实例和原型就构成了原型链</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.citys = [<span class="string">'北京'</span>, <span class="string">'上海'</span>, <span class="string">'深圳'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">'sub'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubType();</span><br><span class="line"></span><br><span class="line">instance1.citys.push(<span class="string">'阿斯加德'</span>); </span><br><span class="line"><span class="comment">// instance1.citys = ['阿斯加德'];</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(instance1.citys) <span class="comment">// ["北京", "上海", "深圳", "阿斯加德"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance2 = <span class="keyword">new</span> SubType();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(instance2.citys) <span class="comment">// ["北京", "上海", "深圳", "阿斯加德"]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>原型链继承存在的问题</strong>：</p>
+<ol>
+<li>包含引用类型的原型属性会被所有实例共享，这会导致对一个实例的修改会影响到另一个实例。在通过原型来实现继承时，原型实际上会变成另一个类型的实例。原先的实例属性就变成了现在的原型属性</li>
+<li>在创建了类型的实例时，不能向超类型的构造函数中传递参数</li>
+</ol>
+<blockquote>
+<p>上边代码中， 当 <code>instance1.citys = [&#39;阿斯加德&#39;];</code> 时会有一个完全不同的效果， 查看详情： <a href="/3012898819.html">js 原型链继承问题拓展</a></p>
+</blockquote>
+<p><strong>2. 借用构造函数继承</strong></p>
+<p>在子类型构造函数的内容调用超类型构造函数。</p>
+<blockquote>
+<p>函数只不过是在特定环境中执行代码的对象，因此通过使用apply()和call()方法可以在新创建的对象上执行构造函数</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  SuperType.call(<span class="keyword">this</span>, <span class="string">'ahui'</span>);</span><br><span class="line">  <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> SubType()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(instance.name, instance.age); <span class="comment">// ahui 18</span></span><br></pre></td></tr></table></figure>
+
+<p>优点：</p>
+<blockquote>
+<ol>
+<li>可以向超类传递参数</li>
+<li>解决了原型中包含引用类型值被所有实例共享的问题</li>
+</ol>
+</blockquote>
+<p>缺点：</p>
+<blockquote>
+<ol>
+<li>方法都在构造函数中定义，函数复用无从谈起，另外超类型原型中定义的方法对于子类型而言都是不可见的。</li>
+</ol>
+</blockquote>
+<p><strong>3. 组合继承（原型链 + 借用构造函数）</strong></p>
+<p>使用原型链实现对原型属性的方法的继承，通过借用构造函数来实现对实例属性的继承，既通过在原型上定义方法来实现了函数复用，又保证了每个实例都有自己的属性。</p>
+<blockquote>
+<p>面向对象实例属性和原型属性判别方法 hasOwnProperty(); 如果为true就是原型属性 否则就是实例属性。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name =  name;</span><br><span class="line">  <span class="keyword">this</span>.colors = [<span class="string">'pink'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 给超类型添加一个实例属性</span></span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过借用构造函数继承实例属性</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  SuperType.call(<span class="keyword">this</span>, name);</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过原型链继承原型属性</span></span><br><span class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</span><br><span class="line"></span><br><span class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.age)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubType(<span class="string">"ahui"</span>, <span class="number">18</span>)</span><br><span class="line">instance1.colors.push(<span class="string">'yellow'</span>)</span><br><span class="line"></span><br><span class="line">instance1.sayAge() <span class="comment">// 18</span></span><br><span class="line"><span class="built_in">console</span>.log(instance1.colors) <span class="comment">// ["pink", "blue", "green", "yellow"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> instance2 = <span class="keyword">new</span> SubType(<span class="string">"angelee"</span>, <span class="number">28</span>)</span><br><span class="line">instance2.sayAge() <span class="comment">// 28</span></span><br><span class="line"><span class="built_in">console</span>.log(instance2.colors) <span class="comment">//  ["pink", "blue", "green"]</span></span><br><span class="line"><span class="comment">// colors 是实例属性，通过借用构造函数实现的继承， 所以instance2不会受影响</span></span><br></pre></td></tr></table></figure>
+
+<p>缺点：</p>
+<blockquote>
+<p>无论什么情况下，都会调用两次超类型构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。</p>
+</blockquote>
+<p>优点：</p>
+<blockquote>
+<ol>
+<li>可以向超类传递参数</li>
+<li>每个实例都有自己的属性</li>
+<li>实现函数复用</li>
+</ol>
+</blockquote>
+<p><strong>原型式继承</strong></p>
+<p>非常简单的一种继承方式：通过<code>Object.create()</code>方法实现原型式继承。这个方法接收两个参数：一个用作新对象原型的对象和（可选的）一个为新对象定义额外属性的对象(可以覆盖原型对象上的同名属性)，在传入一个参数的情况下， <code>Object.create()</code> 和 <code>object()</code> 方法的行为相同。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: <span class="string">"ahui"</span>,</span><br><span class="line">  citys: [<span class="string">"北京"</span>, <span class="string">"上海"</span>, <span class="string">"深圳"</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="built_in">Object</span>.create(person);</span><br><span class="line">person1.name = <span class="string">"angeli"</span>;</span><br><span class="line">person1.citys.push(<span class="string">'阿斯加德'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person1.citys) <span class="comment">// ["北京", "上海", "深圳", "阿斯加德"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person2 = <span class="built_in">Object</span>.create(person);</span><br><span class="line">person2.name = <span class="string">"penghui"</span></span><br><span class="line"><span class="built_in">console</span>.log(person2.citys) <span class="comment">// ["北京", "上海", "深圳", "阿斯加德"]</span></span><br></pre></td></tr></table></figure>
+
+<p>在没有必要创建构造函数，仅让一个对象与另一个对象保持相似的情况下，原型式继承是可以胜任的。</p>
+<p>缺点：</p>
+<blockquote>
+<p>同原型链实现继承一样，包含引用类型值的属性会被所有实例共享。</p>
+</blockquote>
+<p><strong>寄生式继承</strong></p>
+<p>寄生式继承是与原型式继承紧密相关的一种思路。寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部已某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAnotherObject</span>(<span class="params">original</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> clone = <span class="built_in">Object</span>.create(original);</span><br><span class="line">  clone.sayHi = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"hello"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> clone;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: <span class="string">"ahui"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person2 = createAnotherObject(person)</span><br><span class="line"></span><br><span class="line">person2.sayHi() <span class="comment">// hello</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>寄生组合式继承</strong></p>
+<p>所谓寄生组合式继承，即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。基本思路：</p>
+<p>　　不必为了指定子类型的原型而调用超类型的构造函数，我们需要的仅是超类型原型的一个副本，本质上就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型</p>
+<p>寄生组合式继承的基本模式如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">subType, superType</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> prototype = <span class="built_in">Object</span>.create(subperType.prototype); <span class="comment">// 创建对象</span></span><br><span class="line">  prototype.constructor = subType; <span class="comment">// 增强对象</span></span><br><span class="line">  subType.prototype = prototype;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.citys = [<span class="string">"北京"</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  SuperType.call(<span class="keyword">this</span>, name);</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</span><br><span class="line">inheritPrototype(SubType, SuperType)</span><br></pre></td></tr></table></figure>
+
+<p>只调用了一次超类构造函数，效率更高。避免在 <code>SuberType.prototype</code> 上面创建不必要的、多余的属性，与其同时，原型链还能保持不变。</p>
+<p>因此寄生组合继承是引用类型最理性的继承范式。</p>
+<h2 id="10-隐藏页面中的某个元素的方法有哪些？"><a href="#10-隐藏页面中的某个元素的方法有哪些？" class="headerlink" title="10. 隐藏页面中的某个元素的方法有哪些？"></a>10. 隐藏页面中的某个元素的方法有哪些？</h2><p>完全隐藏： 元素从渲染树中消失，不占据空间。<br>视觉上的隐藏：屏幕中不可见，占据空间。<br>语义上的隐藏：读屏软件不可见，但正常占据空间。</p>
+<p><strong>完全隐藏：</strong></p>
+<ol>
+<li><code>display: none;</code></li>
+<li>hidden: <code>&lt;div hidden&gt;&lt;/div&gt;</code></li>
+</ol>
+<p><strong>视觉上的隐藏：</strong></p>
+<ol>
+<li>postion</li>
+<li>transform</li>
+<li>width, height</li>
+<li>opacity</li>
+<li>visibility</li>
+<li>z-index</li>
+<li>clip-path: <code>clip-path: polygon(0 0, 0 0, 0 0, 0 0）</code></li>
+</ol>
+<p><strong>语义上的隐藏</strong><br>aria-hidden: <code>&lt;div aria-hidden = &quot;true&quot;&gt;&lt;/div&gt;</code></p>
+<h2 id="11-let、const、var-的区别有哪些？"><a href="#11-let、const、var-的区别有哪些？" class="headerlink" title="11. let、const、var 的区别有哪些？"></a>11. let、const、var 的区别有哪些？</h2><table>
+<thead>
+<tr>
+<th>声明方式</th>
+<th>变量提升</th>
+<th>暂时性死区</th>
+<th>重复声明</th>
+<th>块作用域有效</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var</td>
+<td>会</td>
+<td>不存在</td>
+<td>允许</td>
+<td>不是</td>
+</tr>
+<tr>
+<td>let</td>
+<td>不会</td>
+<td>存在</td>
+<td>不允许</td>
+<td>是</td>
+</tr>
+<tr>
+<td>Const</td>
+<td>不会</td>
+<td>存在</td>
+<td>不允许</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>这里有一个非常重要的点即是：在JS中，复杂数据类型，存储在栈中的是堆内存的地址，存在栈中的这个地址是不变的，但是存在堆中的值是可以变得。</p>
+<h2 id="12-说一说你对JS执行上下文栈和作用域链的理解"><a href="#12-说一说你对JS执行上下文栈和作用域链的理解" class="headerlink" title="12. 说一说你对JS执行上下文栈和作用域链的理解"></a>12. 说一说你对JS执行上下文栈和作用域链的理解</h2><p><strong>执行上下文</strong></p>
+<p>执行上下文就是当前 JavaScript 代码被解析和执行时所在环境的抽象概念， JavaScript 中运行任何的代码都是在执行上下文中运行。分为<strong>全局执行上下文</strong> 跟 <strong>函数执行上下文</strong></p>
+<p><strong>作用域</strong></p>
+<p>作用域负责收集和维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。</p>
+<p>作用域有两种工作模型：词法作用域和动态作用域，JS采用的是词法作用域工作模型，词法作用域意味着作用域是由书写代码时变量和函数声明的位置决定的。</p>
+<p>作用域分为：</p>
+<ol>
+<li>全局作用域</li>
+<li>函数作用域</li>
+<li>块级作用域</li>
+</ol>
+<p><strong>JS执行上下文栈（执行栈）</strong></p>
+<p>执行栈，也叫做调用栈，具有 LIFO (后进先出) 结构，用于存储在代码执行期间创建的所有执行上下文。</p>
+<p>规则：</p>
+<blockquote>
+<p>首次运行JavaScript代码的时候,会创建一个全局执行的上下文并Push到当前的执行栈中，每当发生函数调用，引擎都会为该函数创建一个新的函数执行上下文并Push当前执行栈的栈顶。<br>当栈顶的函数运行完成后，其对应的函数执行上下文将会从执行栈中Pop出，上下文的控制权将移动到当前执行栈的下一个执行上下文。</p>
+</blockquote>
+<p><strong>作用域链</strong></p>
+<p>作用域链就是从当前作用域开始一层一层向上寻找某个变量，直到找到全局作用域还是没找到，就宣布放弃。这种一层一层的关系，就是作用域链。</p>
+<h2 id="13-防抖函数的作用是什么？请实现一个防抖函数"><a href="#13-防抖函数的作用是什么？请实现一个防抖函数" class="headerlink" title="13. 防抖函数的作用是什么？请实现一个防抖函数"></a>13. 防抖函数的作用是什么？请实现一个防抖函数</h2><p> 防抖和节流的作用都是防止函数多次调用。区别在于，假设一个用户一直触发这个函数，且每次触发函数的间隔小于wait，防抖的情况下只会调用一次(理论上不会被调用，因为触了间隔一直小于wait， 这里的一次应该是触发停止的时候)，而节流的 情况会每隔一定时间（参数wait）调用函数。</p>
+<p>函数防抖（debounce）：当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时，事件处理函数不执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 防抖</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> timeout = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timeout !== <span class="literal">null</span>)&#123;</span><br><span class="line">      clearTimeout(timeout);</span><br><span class="line">    &#125;</span><br><span class="line">    timeout = setTimeout(fn, wait);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">Math</span>.random());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 滚动事件</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, debounce(handle, <span class="number">1000</span>));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的现象是如果你鼠标一直在滚动，那么处理函数就一直不执行，滚动停止1秒后执行。<br>当持续触发scroll事件时，事件处理函数handle只在停止滚动1000毫秒之后才会调用一次，也就是说在持续触发scroll事件的过程中，事件处理函数handle一直没有执行。</p>
+</blockquote>
+<h2 id="14-节流函数的作用是什么？有哪些应用场景，请实现一个节流函数"><a href="#14-节流函数的作用是什么？有哪些应用场景，请实现一个节流函数" class="headerlink" title="14. 节流函数的作用是什么？有哪些应用场景，请实现一个节流函数"></a>14. 节流函数的作用是什么？有哪些应用场景，请实现一个节流函数</h2><p>函数节流（throttle）：当持续触发事件时，保证一定时间段内只调用一次事件处理函数。</p>
+<blockquote>
+<p>节流函数的作用是规定一个单位时间，在这个单位时间内最多只能触发一次函数执行，如果这个单位时间内多次触发函数，只能有一次生效。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 节流throttle代码（定时器）：</span></span><br><span class="line"><span class="keyword">var</span> throttle = <span class="function"><span class="keyword">function</span>(<span class="params">func, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">        <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">            timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                func.apply(context, args);</span><br><span class="line">                timer = <span class="literal">null</span>;</span><br><span class="line">            &#125;, delay);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">Math</span>.random());</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, throttle(handle, <span class="number">1000</span>));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>区别： 函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。</p>
+</blockquote>
+<h2 id="15-什么是闭包？闭包的作用是什么？"><a href="#15-什么是闭包？闭包的作用是什么？" class="headerlink" title="15. 什么是闭包？闭包的作用是什么？"></a>15. 什么是闭包？闭包的作用是什么？</h2><h2 id="16-实现-Promise-all-方法"><a href="#16-实现-Promise-all-方法" class="headerlink" title="16. 实现 Promise.all 方法"></a>16. 实现 Promise.all 方法</h2><p>闭包的定义</p>
+<p>《JavaScript高级程序设计》:</p>
+<blockquote>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
+</blockquote>
+<p>《JavaScript权威指南》：</p>
+<p>从技术的角度讲，所有的JavaScript函数都是闭包：它们都是对象，它们都关联到作用域链。</p>
+<p>《你不知道的JavaScript》</p>
+<p>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。</p>
+<h2 id="17-请实现一个-flattenDeep-函数，把嵌套的数组扁平化"><a href="#17-请实现一个-flattenDeep-函数，把嵌套的数组扁平化" class="headerlink" title="17. 请实现一个 flattenDeep 函数，把嵌套的数组扁平化"></a>17. 请实现一个 flattenDeep 函数，把嵌套的数组扁平化</h2><h2 id="18-请实现一个-uniq-函数，实现数组去重"><a href="#18-请实现一个-uniq-函数，实现数组去重" class="headerlink" title="18. 请实现一个 uniq 函数，实现数组去重"></a>18. 请实现一个 uniq 函数，实现数组去重</h2><h2 id="19-可迭代对象有哪些特点"><a href="#19-可迭代对象有哪些特点" class="headerlink" title="19. 可迭代对象有哪些特点"></a>19. 可迭代对象有哪些特点</h2><h2 id="20-JSONP-的原理是什么？"><a href="#20-JSONP-的原理是什么？" class="headerlink" title="20. JSONP 的原理是什么？"></a>20. JSONP 的原理是什么？</h2><p>参考地址： </p>
+<ol start="0">
+<li><a href="https://mp.weixin.qq.com/s/JIgaDqPzF9Nyt4HWXCuh9Q" target="_blank" rel="noopener">原文地址</a></li>
+<li><a href="https://www.imooc.com/article/67538" target="_blank" rel="noopener">js 基本类型与引用类型的区别</a></li>
+<li><a href="https://segmentfault.com/a/1190000012828382" target="_blank" rel="noopener">一篇文章彻底说清JS的深拷贝/浅拷贝</a></li>
+<li><a href="https://www.jianshu.com/p/1b212581a8d5" target="_blank" rel="noopener">Object.assign 是浅拷贝还是深拷贝</a></li>
+<li><a href="https://www.jianshu.com/p/2975c25e4d71" target="_blank" rel="noopener">详解JS函数柯里化</a></li>
+<li><a href="https://www.jianshu.com/p/a74223e37e3b" target="_blank" rel="noopener">如何让 (a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 的值为true？</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="noopener">关于 Proxy </a>  </li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web/" rel="tag"># web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/464566509.html" rel="prev" title="js Promise / Generator / await async">
+      <i class="fa fa-chevron-left"></i> js Promise / Generator / await async
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/3012898819.html" rel="next" title="JS 原型链继承问题拓展">
+      JS 原型链继承问题拓展 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-new-的实现原理"><span class="nav-number">1.</span> <span class="nav-text">1. new 的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-如何正确判断一-this-指向"><span class="nav-number">2.</span> <span class="nav-text">2. 如何正确判断一 this 指向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-深拷贝和浅拷贝的区别是什么？-实现一个深拷贝"><span class="nav-number">3.</span> <span class="nav-text">3. 深拷贝和浅拷贝的区别是什么？ 实现一个深拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-call-apply的实现原理是什么？"><span class="nav-number">4.</span> <span class="nav-text">4. call/apply的实现原理是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-柯里化函数实现"><span class="nav-number">5.</span> <span class="nav-text">5. 柯里化函数实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-如何让-a-1-amp-amp-a-2-amp-amp-a-3-的值为-true"><span class="nav-number">6.</span> <span class="nav-text">6. 如何让 (a == 1 &amp;&amp; a == 2 &amp;&amp; a == 3) 的值为 true</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-什么是-BFC-？-BFC-的布局规则是什么？如何创建-BFC-？"><span class="nav-number">7.</span> <span class="nav-text">7. 什么是 BFC ？ BFC 的布局规则是什么？如何创建 BFC ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-异步加载JS脚本的方式有哪些"><span class="nav-number">8.</span> <span class="nav-text">8. 异步加载JS脚本的方式有哪些</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-ES5有几种方式可以实现继承？分别有哪些优缺点？"><span class="nav-number">9.</span> <span class="nav-text">9. ES5有几种方式可以实现继承？分别有哪些优缺点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-隐藏页面中的某个元素的方法有哪些？"><span class="nav-number">10.</span> <span class="nav-text">10. 隐藏页面中的某个元素的方法有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-let、const、var-的区别有哪些？"><span class="nav-number">11.</span> <span class="nav-text">11. let、const、var 的区别有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-说一说你对JS执行上下文栈和作用域链的理解"><span class="nav-number">12.</span> <span class="nav-text">12. 说一说你对JS执行上下文栈和作用域链的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-防抖函数的作用是什么？请实现一个防抖函数"><span class="nav-number">13.</span> <span class="nav-text">13. 防抖函数的作用是什么？请实现一个防抖函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-节流函数的作用是什么？有哪些应用场景，请实现一个节流函数"><span class="nav-number">14.</span> <span class="nav-text">14. 节流函数的作用是什么？有哪些应用场景，请实现一个节流函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-什么是闭包？闭包的作用是什么？"><span class="nav-number">15.</span> <span class="nav-text">15. 什么是闭包？闭包的作用是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-实现-Promise-all-方法"><span class="nav-number">16.</span> <span class="nav-text">16. 实现 Promise.all 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-请实现一个-flattenDeep-函数，把嵌套的数组扁平化"><span class="nav-number">17.</span> <span class="nav-text">17. 请实现一个 flattenDeep 函数，把嵌套的数组扁平化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-请实现一个-uniq-函数，实现数组去重"><span class="nav-number">18.</span> <span class="nav-text">18. 请实现一个 uniq 函数，实现数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-可迭代对象有哪些特点"><span class="nav-number">19.</span> <span class="nav-text">19. 可迭代对象有哪些特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-JSONP-的原理是什么？"><span class="nav-number">20.</span> <span class="nav-text">20. JSONP 的原理是什么？</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李鹏辉</p>
+  <div class="site-description" itemprop="description">30岁才开始写的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李鹏辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

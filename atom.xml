@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>.org Blog</title>
+  
+  <subtitle>Penghui&#39;s Blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://didiorg.com/"/>
+  <updated>2020-11-02T16:09:10.546Z</updated>
+  <id>http://didiorg.com/</id>
+  
+  <author>
+    <name>李鹏辉</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue常见API原理分析</title>
+    <link href="http://didiorg.com/3258801602.html"/>
+    <id>http://didiorg.com/3258801602.html</id>
+    <published>2020-07-04T02:14:41.000Z</published>
+    <updated>2020-11-02T16:09:10.546Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;数据绑定&quot;&gt;&lt;a href=&quot;#数据绑定&quot; class=&quot;headerlink&quot; title=&quot;数据绑定&quot;&gt;&lt;/a&gt;数据绑定&lt;/h3&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="vue" scheme="http://didiorg.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试记录</title>
+    <link href="http://didiorg.com/148981014.html"/>
+    <id>http://didiorg.com/148981014.html</id>
+    <published>2020-07-04T01:49:04.000Z</published>
+    <updated>2020-12-31T09:25:41.161Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浏览器多进程+多线程&lt;br&gt;DNS寻址方式，DNS 缓存， dns-prefetch&lt;br&gt;建立 tcp/ip 链接，三次握手，四次挥手，滑动窗口，接收窗口，收发帧的策略，为什么关闭要等待 2MSL，get post 区别，并发限制&lt;br&gt;传输数据，展开计算机网络 5 层/7 层模型，五层：http -&amp;gt; tcp/ip -&amp;gt; ip -&amp;gt; data frames -&amp;gt; 物理介质&lt;br&gt;服务器收到请求，负载均衡，tomcat 容器，后端统一拦截过滤&lt;br&gt;展开 http 报文，实体，http 1.0, 1,1 2之间的区别，gzip，长连接/短连接，展开 cookie 及优化，多子域名拆分等&lt;br&gt;展开 https 中 SSL/TLS 链接步骤&lt;br&gt;展开 http 缓存，强缓存，协商缓存，from memory/disk cache等&lt;br&gt;DOM 树的构建过程，bytes -&amp;gt; characters -&amp;gt; tokens -&amp;gt; nodes -&amp;gt; DOM&lt;br&gt;css rule tree: bytes -&amp;gt; characters -&amp;gt; tokens -&amp;gt; nodes -&amp;gt; CSSOM&lt;br&gt;renderTree 的构建，不可见元素，特殊元素等。&lt;br&gt;渲染：compute css -&amp;gt; construct frames -&amp;gt; layout -&amp;gt; paint&lt;br&gt;展开 reflow , repaint 已经对应优化方法&lt;br&gt;绘制中的简单图层与复合图层，开启硬件加速就是把对应节点丢到复合图层&lt;br&gt;css 盒模型，BFC，IFC&lt;br&gt;静态资源外链 css，js(defer, async)，img&lt;br&gt;展开 loaded 和 domContentLoaded&lt;br&gt;JS 解释阶段: token -&amp;gt; AST -&amp;gt; bytecode -&amp;gt; machine code 然后扯到 JIT&lt;br&gt;JS 预处理阶段，变量提升，分号补全等。&lt;br&gt;JS 执行阶段，EC stack，EC，VO，AO，作用域链， this，原型，继承（组合寄生式继承，es6 继承），JS 事件循环，micortask，marcortask等&lt;br&gt;JS GC -&amp;gt; v8 GC&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/Advanced-Frontend/Daily-Interview-Question&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/Advanced-Frontend/Daily-Interview-Question&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://muyiy.cn/question/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://muyiy.cn/question/&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://blog.csdn.net/liudianjia/article/details/104805503&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/liudianjia/article/details/104805503&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://blog.colafornia.me/post/2020/2020-interviews/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.colafornia.me/post/2020/2020-interviews/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;猿辅导&quot;&gt;&lt;a href=&quot;#猿辅导&quot; class=&quot;headerlink&quot; title=&quot;猿辅导&quot;&gt;&lt;/a&gt;猿辅导&lt;/h3&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue 父子组件的生命周期顺序</title>
+    <link href="http://didiorg.com/677899705.html"/>
+    <id>http://didiorg.com/677899705.html</id>
+    <published>2020-07-03T16:18:42.000Z</published>
+    <updated>2020-11-02T16:09:10.546Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;加载渲染过程&quot;&gt;&lt;a href=&quot;#加载渲染过程&quot; class=&quot;headerlink&quot; title=&quot;加载渲染过程&quot;&gt;&lt;/a&gt;加载渲染过程&lt;/h3&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="vue" scheme="http://didiorg.com/tags/vue/"/>
+    
+      <category term="vue 原理" scheme="http://didiorg.com/tags/vue-%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS 普通函数跟箭头函数的区别</title>
+    <link href="http://didiorg.com/3671102502.html"/>
+    <id>http://didiorg.com/3671102502.html</id>
+    <published>2020-07-03T15:31:38.000Z</published>
+    <updated>2020-11-02T16:09:10.543Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="js 基础" scheme="http://didiorg.com/tags/js-%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS 常见手撕代码题</title>
+    <link href="http://didiorg.com/979881800.html"/>
+    <id>http://didiorg.com/979881800.html</id>
+    <published>2020-06-17T14:18:36.000Z</published>
+    <updated>2020-11-14T14:03:38.289Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这种题目，除了多练，没别的方法&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="js 算法" scheme="http://didiorg.com/tags/js-%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS 执行过程题</title>
+    <link href="http://didiorg.com/1491244432.html"/>
+    <id>http://didiorg.com/1491244432.html</id>
+    <published>2020-06-16T10:22:47.000Z</published>
+    <updated>2020-11-02T16:09:10.540Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;执行过程，就是要理解js的执行上下文&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="js算法" scheme="http://didiorg.com/tags/js%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js 多维数组(数独)扁平化</title>
+    <link href="http://didiorg.com/1909019848.html"/>
+    <id>http://didiorg.com/1909019848.html</id>
+    <published>2020-06-07T04:25:27.000Z</published>
+    <updated>2020-11-02T16:09:10.545Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;[1, 2, 3, [4, 5, 6, [7, 8], 9], 10] =&amp;gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS 原型链继承问题拓展</title>
+    <link href="http://didiorg.com/3012898819.html"/>
+    <id>http://didiorg.com/3012898819.html</id>
+    <published>2020-03-13T14:35:34.000Z</published>
+    <updated>2020-11-02T16:09:10.542Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;原型链继承存在的问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;包含引用类型的原型属性会被所有实例共享，这会导致对一个实例的修改会影响到另一个实例。在通过原型来实现继承时，原型实际上会变成另一个类型的实例。原先的实例属性就变成了现在的原型属性&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在创建了类型的实例时，不能向超类型的构造函数中传递参数&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端进阶 精选20道面试题</title>
+    <link href="http://didiorg.com/2410320999.html"/>
+    <id>http://didiorg.com/2410320999.html</id>
+    <published>2020-03-07T06:43:51.000Z</published>
+    <updated>2020-11-02T16:09:10.548Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-new-的实现原理&quot;&gt;&lt;a href=&quot;#1-new-的实现原理&quot; class=&quot;headerlink&quot; title=&quot;1. new 的实现原理&quot;&gt;&lt;/a&gt;1. new 的实现原理&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="前端进阶" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/"/>
+    
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js Promise / Generator / await async</title>
+    <link href="http://didiorg.com/464566509.html"/>
+    <id>http://didiorg.com/464566509.html</id>
+    <published>2020-03-03T15:02:31.000Z</published>
+    <updated>2020-11-02T16:09:10.545Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Promise 是用来解决函数回调嵌套的， async、await 是用来解决逻辑上的函数依赖的。&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>nginx 常用配置</title>
+    <link href="http://didiorg.com/1508208186.html"/>
+    <id>http://didiorg.com/1508208186.html</id>
+    <published>2020-03-03T06:40:00.000Z</published>
+    <updated>2020-11-02T16:09:10.545Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器 地址栏回车 性能优化</title>
+    <link href="http://didiorg.com/3152193188.html"/>
+    <id>http://didiorg.com/3152193188.html</id>
+    <published>2020-03-02T11:31:18.000Z</published>
+    <updated>2020-11-02T16:09:10.550Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Enter&quot;&gt;&lt;a href=&quot;#Enter&quot; class=&quot;headerlink&quot; title=&quot;Enter&quot;&gt;&lt;/a&gt;Enter&lt;/h2&gt;&lt;h3 id=&quot;1-输入地址&quot;&gt;&lt;a href=&quot;#1-输入地址&quot; class=&quot;headerlink&quot; title=&quot;1. 输入地址&quot;&gt;&lt;/a&gt;1. 输入地址&lt;/h3&gt;&lt;p&gt;比如： didiorg.com/&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="浏览器" scheme="http://didiorg.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+      <category term="性能优化" scheme="http://didiorg.com/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS this</title>
+    <link href="http://didiorg.com/3915840815.html"/>
+    <id>http://didiorg.com/3915840815.html</id>
+    <published>2020-03-01T13:18:26.000Z</published>
+    <updated>2020-11-02T16:09:10.541Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有关于&lt;code&gt;this&lt;/code&gt; ，我们说得最多的一句话就是&lt;strong&gt;谁调用，指向谁&lt;/strong&gt;；也就是&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+      <category term="this" scheme="http://didiorg.com/tags/this/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS typeof instanceof 你应该知道这么多</title>
+    <link href="http://didiorg.com/3369490582.html"/>
+    <id>http://didiorg.com/3369490582.html</id>
+    <published>2020-03-01T05:05:34.000Z</published>
+    <updated>2020-11-02T16:09:10.541Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;typeof主要是用来判断一个变量的类型&quot;&gt;&lt;a href=&quot;#typeof主要是用来判断一个变量的类型&quot; class=&quot;headerlink&quot; title=&quot;typeof主要是用来判断一个变量的类型&quot;&gt;&lt;/a&gt;&lt;code&gt;typeof&lt;/code&gt;主要是用来判断一个变量的类型&lt;/h3&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+      <category term="浏览器" scheme="http://didiorg.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS 函数实参转换为数组</title>
+    <link href="http://didiorg.com/1882318475.html"/>
+    <id>http://didiorg.com/1882318475.html</id>
+    <published>2020-02-29T12:49:38.000Z</published>
+    <updated>2020-11-02T16:09:10.541Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;实际参数在函数中我们可以使用 arguments 对象获得 （注：形参可通过 arguments.callee 获得），虽然 arguments 对象与数组形似，但仍不是真正意义上的数组。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+      <category term="浏览器" scheme="http://didiorg.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+      <category term="array" scheme="http://didiorg.com/tags/array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS new 一个对象的过程</title>
+    <link href="http://didiorg.com/3315289936.html"/>
+    <id>http://didiorg.com/3315289936.html</id>
+    <published>2020-02-29T11:36:50.000Z</published>
+    <updated>2020-11-02T16:09:10.540Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先让我回忆一下创建对象的三种方法&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+      <category term="浏览器" scheme="http://didiorg.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS prototype</title>
+    <link href="http://didiorg.com/prototype.html"/>
+    <id>http://didiorg.com/prototype.html</id>
+    <published>2020-02-28T17:59:58.000Z</published>
+    <updated>2020-11-02T16:09:10.540Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在典型的面向对象的语言中，如java，都存在类（class）的概念，类就是对象的模板，对象就是类的实例。但是在Javascript语言体系中，是不存在类（Class）的概念的，javascript中不是基于‘类的’，而是通过构造函数（constructor）和原型链（prototype chains）实现的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+      <category term="浏览器" scheme="http://didiorg.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS 数据类型你应该知道的可不止这些</title>
+    <link href="http://didiorg.com/1405041715.html"/>
+    <id>http://didiorg.com/1405041715.html</id>
+    <published>2020-02-28T10:26:44.000Z</published>
+    <updated>2020-11-02T16:09:10.542Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;基本数据类型&quot;&gt;&lt;a href=&quot;#基本数据类型&quot; class=&quot;headerlink&quot; title=&quot;基本数据类型&quot;&gt;&lt;/a&gt;基本数据类型&lt;/h3&gt;&lt;p&gt;&lt;code&gt;string, number, boolean, null, undefined&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+      <category term="浏览器" scheme="http://didiorg.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS dom元素位置相关的内容</title>
+    <link href="http://didiorg.com/880232555.html"/>
+    <id>http://didiorg.com/880232555.html</id>
+    <published>2020-02-27T14:22:35.000Z</published>
+    <updated>2020-11-02T16:09:10.540Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;offsetWidth: 返回元素的宽度（包括元素宽度 + 内边距 + 边框，不包括外边距）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端基础" scheme="http://didiorg.com/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="js" scheme="http://didiorg.com/tags/js/"/>
+    
+      <category term="web" scheme="http://didiorg.com/tags/web/"/>
+    
+      <category term="浏览器" scheme="http://didiorg.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+      <category term="dom" scheme="http://didiorg.com/tags/dom/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>eslint 常用配置中文注释</title>
+    <link href="http://didiorg.com/4069831407.html"/>
+    <id>http://didiorg.com/4069831407.html</id>
+    <published>2020-02-24T06:03:32.000Z</published>
+    <updated>2020-11-02T16:09:10.543Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;注意这里的数字：0表示不不处理，1表示警告，2表示错误并退出&quot;&gt;&lt;a href=&quot;#注意这里的数字：0表示不不处理，1表示警告，2表示错误并退出&quot; class=&quot;headerlink&quot; title=&quot;注意这里的数字：0表示不不处理，1表示警告，2表示错误并退出&quot;&gt;&lt;/a&gt;注意这里的数字：0表示不不处理，1表示警告，2表示错误并退出&lt;/h4&gt;&lt;p&gt;这里的 0，1，2 也可以用 off, warn, error, 表示:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“off”或者0    //关闭规则关闭&lt;br&gt;“warn”或者1    //在打开的规则作为警告（不影响退出代码）&lt;br&gt;“error”或者2    //把规则作为一个错误（退出代码触发时为1）&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"didiorg.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Don’t be anxious, just do it.">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识点 check list">
+<meta property="og:url" content="http://didiorg.com/web.html">
+<meta property="og:site_name" content=".org Blog">
+<meta property="og:description" content="Don’t be anxious, just do it.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-02T16:09:10.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识点 check list">
+<meta name="twitter:description" content="Don’t be anxious, just do it.">
+
+<link rel="canonical" href="http://didiorg.com/web.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端知识点 check list | .org Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title=".org Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">.org Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Penghui's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://didiorg.com/web.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李鹏辉">
+      <meta itemprop="description" content="30岁才开始写的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content=".org Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端知识点 check list
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-14 18:32:15" itemprop="dateCreated datePublished" datetime="2020-01-14T18:32:15+08:00">2020-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Don’t-be-anxious-just-do-it"><a href="#Don’t-be-anxious-just-do-it" class="headerlink" title="Don’t be anxious, just do it."></a>Don’t be anxious, just do it.</h2><!--  -->
+<a id="more"></a>
+
+<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ol>
+<li><input checked disabled type="checkbox"> <a href="/cache.html">浏览器缓存</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3152193188.html">性能优化 地址栏输完 url， 回车之后，浏览器做了哪些工作</a></li>
+<li><input checked disabled type="checkbox"> <a href="/1405041715.html">JS数据类型 基本数据类型和复杂类型的区别</a></li>
+<li><input checked disabled type="checkbox"> <a href="/prototype.html">js prototype的理解</a></li>
+<li><input checked disabled type="checkbox"> <a href="/proto.html">js 中<code>__proto__</code>和 <code>prototype</code> 的区别和关系</a></li>
+<li><input checked disabled type="checkbox"> <a href="/isArray.html">判断变量是数组的方法</a></li>
+<li><input checked disabled type="checkbox"> <a href="/1015335320.html">原型与原型链</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3315289936.html">new 一个对象的过程</a></li>
+<li><input checked disabled type="checkbox"> <a href="/1882318475.html">JS 函数实参转换为数组</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3369490582.html">typeof instanceof 底层原理实现</a></li>
+<li><input checked disabled type="checkbox"> <a href="/3915840815.html">this指向,箭头函数特点</a><!-- 12. [ ] call apply bind 的区别 bind方法的实现 --></li>
+<li>事件轮询, promise, async await</li>
+<li><input disabled type="checkbox"> Promisetry产生的初衷 可以用catch吗 <a href="https://segmentfault.com/a/1190000018586947" target="_blank" rel="noopener">什么是Promise.try</a></li>
+<li>script 标签 defer async</li>
+<li>axois实现原理</li>
+<li>对象、数组、map、set，等遍历的方法，分别怎么用的，什么原理（想要for of能遍历原型上的东西，可以用iterator）</li>
+<li>跨域以及使用cors浏览器需要做什么处理  为什么要跨域，为什么要有事件轮询的机制  限制了什么，主要是限制cookie</li>
+<li>各种继承方案（主要是红宝书里的）</li>
+<li>三次握手，四次挥手详细了解，对https的了解</li>
+<li>cookie和session区别（cookie的数据是服务端返回后通过什么存到浏览器的，然后跨域会到服务器么，（分两个阶段）， cookie知多少包括用法，特性，domain和基本封装）</li>
+<li>防止js攻击，xss crfs知多少</li>
+<li>预编译以及变量声明提升函数提升等</li>
+<li>Websocket</li>
+<li>对浏览器兼容性的理解和方法或者做过哪些兼容性处理</li>
+<li>正则表达式匹配（转换时间，验证手机号等）</li>
+<li><input disabled type="checkbox"> symbol作用</li>
+<li><input disabled type="checkbox"> es5和es6区别</li>
+<li><input disabled type="checkbox"> es5实现es6的class</li>
+</ol>
+<h3 id="JS-算法"><a href="#JS-算法" class="headerlink" title="JS 算法"></a>JS 算法</h3><ol>
+<li><input disabled type="checkbox"> 数据去重</li>
+<li><input disabled type="checkbox"> 去掉首尾空格</li>
+<li><input disabled type="checkbox"> 排序</li>
+<li><input disabled type="checkbox"> 深度拷贝</li>
+<li><input disabled type="checkbox"> 斐波那契数列求和</li>
+<li><input disabled type="checkbox"> js操tabletable作并对排序</li>
+<li><input disabled type="checkbox"> 找出所有乘数</li>
+</ol>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
+<li><input disabled type="checkbox"> flex(需要详细说明每个属性),flex1是什么</li>
+<li><input disabled type="checkbox"> positionsticky</li>
+<li><input disabled type="checkbox"> 盒模型</li>
+<li><input disabled type="checkbox"> 百分比和vh的区别，height 100%和100vh的区别</li>
+<li><input disabled type="checkbox"> em,rem计算</li>
+<li><input disabled type="checkbox"> 垂直居中方式</li>
+<li><input disabled type="checkbox"> BFC相关知识</li>
+<li><input disabled type="checkbox"> 重排触发重新绘制的原理</li>
+<li><input disabled type="checkbox"> 节流防抖实现</li>
+</ol>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><ol>
+<li><input disabled type="checkbox"> 做过和哪些回流和重绘相关的优化</li>
+<li><input disabled type="checkbox"> 虚拟dom的diff</li>
+<li><input disabled type="checkbox"> useEffect</li>
+<li><input disabled type="checkbox"> hook</li>
+<li><input disabled type="checkbox"> 新的声明周期</li>
+<li><input disabled type="checkbox"> immutablereselect和有什么好处</li>
+<li><input disabled type="checkbox"> 生命周期hook</li>
+<li><input disabled type="checkbox"> react列表key</li>
+</ol>
+<h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><ol>
+<li><input disabled type="checkbox"> vue双向绑定的原理（vue答双向绑定的时候结合一些complie和watcher等流程答）（complie编译器编译的都是哪些东西，怎么抄编译的，把什么编译成什么）</li>
+<li><input disabled type="checkbox"> 实现一个vue底层的简单监听函数，就是实现订阅者发布者模式</li>
+<li><input disabled type="checkbox"> vue父子组件传值（多种方式）以及vuex</li>
+<li><input disabled type="checkbox"> vue生命周期及每阶段都能做什么（vue父子组件嵌套生命周期的顺序）</li>
+<li><input disabled type="checkbox"> vue router跳转的原理（刷新不刷新）</li>
+<li><input disabled type="checkbox"> vue的高级用法</li>
+<li><input disabled type="checkbox"> vuex是否是持久化的，持久化是需要结合本地缓存么</li>
+<li><input disabled type="checkbox"> seo渲染是在服务器端的，会出现白屏情况，vue渲染是会先加载结构的，慢慢渲染</li>
+<li><input disabled type="checkbox"> vue兼容性（2.0版本）（ie9以下不兼容因为object.defineProperty的兼容性）</li>
+<li><input disabled type="checkbox"> vue源码知多少</li>
+<li><input disabled type="checkbox"> jquery和vue区别和react的区别，mvc和mvvm框架区别，模块化那些区别</li>
+<li><input disabled type="checkbox"> props穿的数据和data里数据的区别</li>
+<li><input disabled type="checkbox"> Vue首次渲染页面时触发了哪些生命周期，props传数据时又触发了哪些生命周期</li>
+<li><input disabled type="checkbox"> vuex的api可以set（也能实现数据劫持），v-html，v-for, v-if同时用会怎么样，v-once，插槽等</li>
+</ol>
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><ol>
+<li><input disabled type="checkbox"> 做过哪些优化</li>
+<li>手写一个尽量多功能的webpack（快手问的QAQ）</li>
+</ol>
+<h3 id="h5"><a href="#h5" class="headerlink" title="h5"></a>h5</h3><ol>
+<li><input disabled type="checkbox"> 项目遇到的问题及解决方式</li>
+</ol>
+<h3 id="Ts"><a href="#Ts" class="headerlink" title="Ts"></a>Ts</h3><ol>
+<li><input disabled type="checkbox"> 为什么要是用Ts</li>
+</ol>
+<h3 id="开放题"><a href="#开放题" class="headerlink" title="开放题"></a>开放题</h3><ol>
+<li><input disabled type="checkbox"> 如何设计组件table或UI</li>
+</ol>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
+<li><input disabled type="checkbox"> IndexDB</li>
+<li><input disabled type="checkbox"> 数据库选型</li>
+<li><input disabled type="checkbox"> link用法原理能干啥与@import区别等</li>
+<li><input disabled type="checkbox"> 浏览器几个标签页之间怎么传递数据</li>
+<li><input disabled type="checkbox"> Flutter</li>
+<li><a href="/1508208186.html">nginx 常用配置</a></li>
+</ol>
+<p>### </p>
+<h4 id="js-异步编程"><a href="#js-异步编程" class="headerlink" title="js 异步编程"></a>js 异步编程</h4><ol>
+<li>回调</li>
+<li>事件监听</li>
+<li>发布/订阅</li>
+<li>promise</li>
+<li>generator yield;</li>
+<li>async wait (终级方法)</li>
+</ol>
+<h4 id="promise-使用以及实现"><a href="#promise-使用以及实现" class="headerlink" title="promise 使用以及实现"></a>promise 使用以及实现</h4><p>击鼓传花， 每隔n出列一个人，求最后那个<br>mobox原理<br>node使用场景</p>
+<p>柯理化实现<br>两个数组求交集</p>
+<p>合并两个有序数组为一个有序数组<br>无序数组中的最大数和第二大数</p>
+<p>Vue如何实现双向绑定<br>template模版编译过程<br>vue router 实现原理<br>navigator 实现原理</p>
+<p>webpack 源码分析<br>https原理和tcp协议原理<br>http缓存问题</p>
+<p>vuex的设计模式</p>
+<p>深拷贝<br>数组去重<br>如何快速创建一个长度为100数值为1的数组<br>node next<br>盒子模型<br>垂直居中<br>flex布局跟浮动布局<br>排序算法<br>判断对象和数组</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web/" rel="tag"># web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/thaiwooski.html" rel="prev" title="崇礼太舞滑雪">
+      <i class="fa fa-chevron-left"></i> 崇礼太舞滑雪
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/3651303969.html" rel="next" title="让 hexo URL更加优雅">
+      让 hexo URL更加优雅 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Don’t-be-anxious-just-do-it"><span class="nav-number">1.</span> <span class="nav-text">Don’t be anxious, just do it.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS"><span class="nav-number">1.1.</span> <span class="nav-text">JS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-算法"><span class="nav-number">1.2.</span> <span class="nav-text">JS 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">1.3.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React"><span class="nav-number">1.4.</span> <span class="nav-text">React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue"><span class="nav-number">1.5.</span> <span class="nav-text">Vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Webpack"><span class="nav-number">1.6.</span> <span class="nav-text">Webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#h5"><span class="nav-number">1.7.</span> <span class="nav-text">h5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ts"><span class="nav-number">1.8.</span> <span class="nav-text">Ts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开放题"><span class="nav-number">1.9.</span> <span class="nav-text">开放题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它"><span class="nav-number">1.10.</span> <span class="nav-text">其它</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#js-异步编程"><span class="nav-number">1.10.1.</span> <span class="nav-text">js 异步编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#promise-使用以及实现"><span class="nav-number">1.10.2.</span> <span class="nav-text">promise 使用以及实现</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李鹏辉</p>
+  <div class="site-description" itemprop="description">30岁才开始写的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李鹏辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

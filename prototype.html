@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"didiorg.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在典型的面向对象的语言中，如java，都存在类（class）的概念，类就是对象的模板，对象就是类的实例。但是在Javascript语言体系中，是不存在类（Class）的概念的，javascript中不是基于‘类的’，而是通过构造函数（constructor）和原型链（prototype chains）实现的。">
+<meta name="keywords" content="js,web,浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS prototype">
+<meta property="og:url" content="http://didiorg.com/prototype.html">
+<meta property="og:site_name" content=".org Blog">
+<meta property="og:description" content="在典型的面向对象的语言中，如java，都存在类（class）的概念，类就是对象的模板，对象就是类的实例。但是在Javascript语言体系中，是不存在类（Class）的概念的，javascript中不是基于‘类的’，而是通过构造函数（constructor）和原型链（prototype chains）实现的。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-02T16:09:10.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS prototype">
+<meta name="twitter:description" content="在典型的面向对象的语言中，如java，都存在类（class）的概念，类就是对象的模板，对象就是类的实例。但是在Javascript语言体系中，是不存在类（Class）的概念的，javascript中不是基于‘类的’，而是通过构造函数（constructor）和原型链（prototype chains）实现的。">
+
+<link rel="canonical" href="http://didiorg.com/prototype.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JS prototype | .org Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title=".org Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">.org Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Penghui's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://didiorg.com/prototype.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李鹏辉">
+      <meta itemprop="description" content="30岁才开始写的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content=".org Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS prototype
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-29 01:59:58" itemprop="dateCreated datePublished" datetime="2020-02-29T01:59:58+08:00">2020-02-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在典型的面向对象的语言中，如java，都存在类（class）的概念，类就是对象的模板，对象就是类的实例。但是在Javascript语言体系中，是不存在类（Class）的概念的，javascript中不是基于‘类的’，而是通过构造函数（constructor）和原型链（prototype chains）实现的。</p>
+<a id="more"></a>
+
+<p>在ES6中提供了更接近传统语言的写法，引入了Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让原型对象的写法更加清晰、更像面向对象编程的语法而已。</p>
+<h3 id="构造函数-constructor-的简单介绍"><a href="#构造函数-constructor-的简单介绍" class="headerlink" title="构造函数(constructor)的简单介绍"></a>构造函数(constructor)的简单介绍</h3><p>　　所谓构造函数，就是提供了一个生成对象的模板并描述对象的基本结构的函数。一个构造函数，可以生成多个对象，每个对象都有相同的结构。总的来说，构造函数就是对象的模板，对象就是构造函数的实例。<br>构造函数的特点有：<br>　　a：构造函数的函数名首字母必须大写。<br>　　b：内部使用this对象，来指向将要生成的对象实例。<br>　　c：使用new操作符来调用构造函数，并返回对象实例。</p>
+<p>看一个最简单的一个例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name =  name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> boy = <span class="keyword">new</span> Person(<span class="string">'Ahui'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(boy.name); <span class="comment">// Ahui</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数的缺点"><a href="#构造函数的缺点" class="headerlink" title="构造函数的缺点"></a>构造函数的缺点</h3><p>　　所有的实例对象都可以继承构造函数中的属性和方法。但是，同一个对象实例之间，无法共享属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.height = height;</span><br><span class="line">  <span class="keyword">this</span>.hobby = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'watching movies'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> boy = <span class="keyword">new</span> Person(<span class="string">'keith'</span>,<span class="number">180</span>);</span><br><span class="line"><span class="keyword">var</span> girl = <span class="keyword">new</span> Person(<span class="string">'rascal'</span>,<span class="number">168</span>);</span><br><span class="line"><span class="built_in">console</span>.log(boy.name); <span class="comment">//'keith'</span></span><br><span class="line"><span class="built_in">console</span>.log(girl.name); <span class="comment">//'rascal'</span></span><br><span class="line"><span class="built_in">console</span>.log(boy.hobby === girl.hobby); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p>　　上面代码中，一个构造函数Person生成了两个对象实例boy和girl，并且有两个属性和一个方法。但是，它们的hobby方法是不一样的。也就是说，每当你使用new来调用构造函数放回一个对象实例的时候，都会创建一个hobby方法。这既没有必要，又浪费资源，因为所有hobby方法都是统一的行为，完全可以被两个对象实例共享。</p>
+<p>　　所以，构造函数的缺点就是： <strong>同一个构造函数的对象实例之间无法共享属性或方法</strong></p>
+<h3 id="prototype属性的作用"><a href="#prototype属性的作用" class="headerlink" title="prototype属性的作用"></a>prototype属性的作用</h3><p>　　为了解决构造函数的对象实例之间无法共享属性的缺点，js提供了prototype属性。</p>
+<p>　　js中每个数据类型都是对象（除了null和undefined），而每个对象都继承自另外一个对象，后者称为“原型”（prototype）对象，只有null除外，它没有自己的原型对象。</p>
+<p>　　<strong>原型对象上的所有属性和方法，都会被对象实例所共享。</strong></p>
+<p>　　通过构造函数生成对象实例时，会将对象实例的原型指向构造函数的prototype属性。每一个构造函数都有一个prototype属性，这个属性就是对象实例的原型对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.height = height;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayname = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> boy = <span class="keyword">new</span> Person(<span class="string">'Ahui'</span>, <span class="number">183</span>);</span><br><span class="line"><span class="keyword">var</span> girl = <span class="keyword">new</span> Person(<span class="string">'Ajiao'</span>, <span class="number">168</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(boy.sayname()); <span class="comment">// Ahui</span></span><br><span class="line"><span class="built_in">console</span>.log(girl.sayname()); <span class="comment">// Ajiao</span></span><br><span class="line"><span class="built_in">console</span>.log(boy.sayname === girl.sayname); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>　　上面代码中，如果将hobby方法放在原型对象上，那么两个实例对象都共享着同一个方法。我希望大家都能理解的是，对于构造函数来说，prototype是作为构造函数的属性；对于对象实例来说，prototype是对象实例的原型对象。所以prototype即是属性，又是对象。</p>
+<p>　　原型对象的属性不是对象实例的属性。对象实例的属性是继承自构造函数定义的属性，因为构造函数内部有一个this关键字来指向将要生成的对象实例。对象实例的属性，其实就是构造函数内部定义的属性。只要修改原型对象上的属性和方法，变动就会立刻体现在所有对象实例上。</p>
+<p>　　上面代码中，当修改了原型对象的hobby方法之后，两个对象实例都发生了变化。这是因为对象实例其实是没有hobby方法，都是读取原型对象的hobby方法。也就是说，当某个对象实例没有该属性和方法时，就会到原型对象上去查找。如果实例对象自身有某个属性或方法，就不会去原型对象上查找。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, height</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.height = height;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.hobby = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'swimming'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> boy = <span class="keyword">new</span> Person(<span class="string">'Ahui'</span>, <span class="number">183</span>);</span><br><span class="line"><span class="keyword">var</span> girl = <span class="keyword">new</span> Person(<span class="string">'Ajiao'</span>, <span class="number">168</span>);</span><br><span class="line">boy.hobby = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'play basketball'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(boy.hobby()); <span class="comment">//'play basketball'</span></span><br><span class="line"><span class="built_in">console</span>.log(girl.hobby()); <span class="comment">//'swimming'</span></span><br><span class="line"><span class="built_in">console</span>.log(boy.hobby === girl.hobby); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>　　上面代码中，boy对象实例的hobby方法修改时，就不会在继承原型对象上的hobby方法了。不过girl仍然会继承原型对象的方法。这个时候boy.hobby与girl.hobby就不相等了</p>
+<p>　　总结一下：<br>　　a：原型对象的作用，就是定义所有对象实例所共享的属性和方法。<br>　　b：prototype，对于构造函数来说，它是一个属性；对于对象实例来说，它是一个原型对象。</p>
+<h3 id="原型链（prototype-chains）"><a href="#原型链（prototype-chains）" class="headerlink" title="原型链（prototype chains）"></a>原型链（prototype chains）</h3><p>　　对象的属性和方法，有可能是定义在自身，也有可能是定义在它的原型对象。由于原型对象本身对于对象实例来说也是对象，它也有自己的原型，所以形成了一条原型链（prototype chain）。比如，a对象是b对象的原型，b对象是c对象的原型，以此类推。所有一切的对象的原型顶端，都是Object.prototype，即Object构造函数的prototype属性指向的那个对象。</p>
+<p>　　当然，Object.prototype对象也有自己的原型对象，那就是没有任何属性和方法的null对象，而null对象没有自己的原型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(<span class="built_in">Object</span>.prototype)); <span class="comment">//null</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.isPrototypeOf(boy)) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>　　原型链（prototype chain）的特点有：<br>　　　　a：读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原型的原型去找。如果直到最顶层的Object.prototype还是找不到，则返回undefined。<br>　　　　b：如果对象自身和它的原型，都定义了一个同名属性，那么优先读取对象自身的属性，这叫做“覆盖”（overiding）。<br>　　　　c：一级级向上在原型链寻找某个属性，对性能是有影响的。所寻找的属性在越上层的原型对象，对性能的影响越大。如果寻找某个不存在的属性，将会遍历整个原型链。</p>
+<p>　　看概念可能比较晦涩，我们来看一个例子。但是理解了概念真的很重要。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = []</span><br><span class="line"><span class="built_in">console</span>.log(arr.length;  <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.join()); <span class="comment">//</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.valueOf()); <span class="comment">// []</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，定了一个数组arr，数组里面有三个元素。我们并没有给数组添加任何属性和方法，可是却在调用length，join()，valueOf()时，却不会报错。</p>
+<p>　　length属性是继承自Array.prototype的，属于原型对象上的一个属性。join方法也是继承自Array.prototype的，属于原型对象上的一个方法。这两个方法是所有数组所共享的。当实例对象上没有这个length属性时，就会去原型对象查找。</p>
+<p>　　valueOf方法是继承自Object.prototype的。首先，arr数组是没有valueOf方法的，所以就到原型对象Array.prototype查找。然后，发现Array.prototype对象上没有valueOf方法。最后，再到它的原型对象Object.prototype查找。</p>
+<p>　　来看看Array.prototype对象和Object.prototype对象分别有什么属性和方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(<span class="built_in">Array</span>.prototype))</span><br><span class="line"><span class="comment">//["length", "toSource", "toString", "toLocaleString", "join", "reverse", "sort", "push", "pop", "shift", "unshift", "splice", "concat", "slice", "lastIndexOf", "indexOf", "forEach", "map", "filter", "reduce", "reduceRight", "some", "every", "find", "findIndex", "copyWithin", "fill", "entries", "keys", "values", "includes", "constructor", "$set", "$remove"]</span></span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(<span class="built_in">Object</span>.prototype))</span><br><span class="line"> <span class="comment">// ["toSource", "toString", "toLocaleString", "valueOf", "watch", "unwatch", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "__defineGetter__", "__defineSetter__", "__lookupGetter__", "__lookupSetter__", "__proto__", "constructor"]</span></span><br></pre></td></tr></table></figure>
+
+<p>　　我相信，大家看到这里，对prototype还是似懂非懂的。这很正常，毕竟是js中比较重要又比较抽象的概念,不可能那么快就掌握，再啃多几篇，说不定掌握其精髓。在某乎上，有一个活生生的实例，可能也是大家会遇到的问题。可以看看 js构造函数和原型对象。</p>
+<h3 id="constructor属性"><a href="#constructor属性" class="headerlink" title="constructor属性"></a>constructor属性</h3><p>　　prototype对象有一个constructor属性，默认指向prototype对象所在的构造函数。</p>
+<p>　　要注意的是，prototype是构造函数的属性，而constructor则是构造函数的prototype属性所指向的那个对象，也就是原型对象的属性。注意不要混淆。</p>
+<p>　　由于constructor属性是定义在原型（prototype）对象上面，意味着可以被所有实例对象继承。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(a.constructor); <span class="comment">//A()</span></span><br><span class="line"><span class="built_in">console</span>.log(a.constructor === A.prototype.constructor);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，a是构造函数A的实例对象，但是a自身没有contructor属性，该属性其实是读取原型链上面的A.prototype.constructor属性。</p>
+<h4 id="constructor属性的作用"><a href="#constructor属性的作用" class="headerlink" title="constructor属性的作用"></a>constructor属性的作用</h4><p>　　　a：分辨原型对象到底属于哪个构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(a.constructor === A) <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(a.constructor === <span class="built_in">Array</span>) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码表示，使用constructor属性，确定实例对象a的构造函数是A，而不是Array。</p>
+<p>　　　　b：从实例新建另一个实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"> <span class="keyword">var</span> a = <span class="keyword">new</span> A();</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> a.constructor();</span><br><span class="line"><span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> A); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，a是构造函数A的实例对象，可以从a.constructor间接调用构造函数。</p>
+<p>　　　　c：调用自身的构造函数成为可能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A.prototype.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">this</span>.constructor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　　　d：提供了一种从构造函数继承另外一种构造函数的模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Son.height.constructor.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">Son.height = <span class="keyword">new</span> Father();</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，Father和Son都是构造函数，在Son内部的this上调用Father，就会形成Son继承Father的效果。</p>
+<p>　　　　e：由于constructor属性是一种原型对象和构造函数的关系，所以在修改原型对象的时候，一定要注意constructor的指向问题。</p>
+<p>　　　　解决方法有两种，要么将constructor属性指向原来的构造函数，要么只在原型对象上添加属性和方法，避免instanceof失真。</p>
+<h3 id="instanceof运算符"><a href="#instanceof运算符" class="headerlink" title="instanceof运算符"></a>instanceof运算符</h3><p>　　instanceof运算符返回一个布尔值，表示指定对象是否为某个构造函数的实例。</p>
+<p>　　因为instanceof对整个原型链上的对象都有效，所以同一个实例对象，可能会对多个构造函数都返回true。</p>
+<p>　注意，instanceof对象只能用于复杂数据类型（数组，对象等），不能用于简单数据类型（布尔值，数字，字符串等）。</p>
+<p>　　此外，null和undefined都不是对象，所以instanceof 总是返回false。</p>
+<p>　　利用instanceof运算符，还可以巧妙地解决，调用构造函数时，忘了加new命令的问题。</p>
+<p>　　上面代码中，使用了instanceof运算符来判断函数体内的this关键字是否指向构造函数Keith的实例，如果不是，就表明忘记加new命令，此时构造函数会返回一个对象实例，避免出现意想不到的结果。</p>
+<p><a href="https://www.cnblogs.com/douyage/p/8630529.html" target="_blank" rel="noopener">原文出处&gt;&gt;&gt;</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+              <a href="/tags/web/" rel="tag"># web</a>
+              <a href="/tags/浏览器/" rel="tag"># 浏览器</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/1405041715.html" rel="prev" title="JS 数据类型你应该知道的可不止这些">
+      <i class="fa fa-chevron-left"></i> JS 数据类型你应该知道的可不止这些
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/3315289936.html" rel="next" title="JS new 一个对象的过程">
+      JS new 一个对象的过程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数-constructor-的简单介绍"><span class="nav-number">1.</span> <span class="nav-text">构造函数(constructor)的简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数的缺点"><span class="nav-number">2.</span> <span class="nav-text">构造函数的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype属性的作用"><span class="nav-number">3.</span> <span class="nav-text">prototype属性的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链（prototype-chains）"><span class="nav-number">4.</span> <span class="nav-text">原型链（prototype chains）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor属性"><span class="nav-number">5.</span> <span class="nav-text">constructor属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#constructor属性的作用"><span class="nav-number">5.1.</span> <span class="nav-text">constructor属性的作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof运算符"><span class="nav-number">6.</span> <span class="nav-text">instanceof运算符</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李鹏辉</p>
+  <div class="site-description" itemprop="description">30岁才开始写的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李鹏辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

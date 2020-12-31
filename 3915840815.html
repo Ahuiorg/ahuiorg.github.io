@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"didiorg.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="有关于this ，我们说得最多的一句话就是谁调用，指向谁；也就是  this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象">
+<meta name="keywords" content="js,web,this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS this">
+<meta property="og:url" content="http://didiorg.com/3915840815.html">
+<meta property="og:site_name" content=".org Blog">
+<meta property="og:description" content="有关于this ，我们说得最多的一句话就是谁调用，指向谁；也就是  this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-02T16:09:10.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS this">
+<meta name="twitter:description" content="有关于this ，我们说得最多的一句话就是谁调用，指向谁；也就是  this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象">
+
+<link rel="canonical" href="http://didiorg.com/3915840815.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JS this | .org Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title=".org Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">.org Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Penghui's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://didiorg.com/3915840815.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李鹏辉">
+      <meta itemprop="description" content="30岁才开始写的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content=".org Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS this
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-01 21:18:26" itemprop="dateCreated datePublished" datetime="2020-03-01T21:18:26+08:00">2020-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>有关于<code>this</code> ，我们说得最多的一句话就是<strong>谁调用，指向谁</strong>；也就是</p>
+<blockquote>
+<p>this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象</p>
+</blockquote>
+<a id="more"></a>
+
+<p>其实， 在我们 JS 里边，要想真的理解 <code>this</code> ，只知道上边这一句话是完全不行的，我们可以从以下几个方面学习跟理解 <code>this</code> ：</p>
+<p>从 <code>this</code> 绑定层面去理解：默认绑定，隐式绑定，显式绑定，<code>new</code> 绑定</p>
+<p>从函数的运行环境层面去理解: <code>this</code>， 内存， 函数，环境变量</p>
+<p>能过实际代码的上下文去理解</p>
+<h3 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h3><p>先看一个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"global"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">"foo"</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();  <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+
+<p>很显然， <code>foo</code> 函数执行的时候，所在的环境是 <code>window</code>, 所以 <code>this.name</code> 就是 <code>window</code> 的 <code>name</code> 属性</p>
+<p>再看一个稍微复杂点的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">"global"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name); <span class="comment">// global</span></span><br><span class="line">  foo.name = <span class="string">"foo"</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sayname</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name); <span class="comment">// global</span></span><br><span class="line">  &#125;</span><br><span class="line">  sayname()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+
+<p>上边第一个 <code>this</code> 很好理解，是 <code>foo</code> 在全局环境下被调用，所以是 <code>global</code></p>
+<p>而第二个 <code>this</code>，表面上看上去是在 <code>foo</code> 函数内部被执行，而且 <code>foo.name</code> 赋了新值 <code>&#39;foo&#39;</code>, 所以很容易就会认为第二个 <code>this</code> 会打印 <code>foo</code>， 其实不然；</p>
+<p><code>sayname</code> 虽是在 <code>foo</code> 函数里边被执行，但并非是被 <code>foo</code> 函数调用，所以，调用 <code>sayname</code> 的还是 <code>window</code>; </p>
+<p>可以参考下边代码进行理解:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">"global"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name); <span class="comment">// global</span></span><br><span class="line">  foo.name = <span class="string">"foo"</span></span><br><span class="line">  foo.sayname = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name); <span class="comment">// foo</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  foo.sayname(); <span class="comment">// 这里的 sayname 函数才是被 foo 调用的，所以才会打印 foo</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+
+<p>这就是默认绑定规则,它是 javascript 中最常见的一种函数调用模式，this 的绑定规则也是四种绑定规则中最简单的一种，就是绑定在全局作用域上。</p>
+<h3 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h3><p>先看例子： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayname</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ahui = &#123;</span><br><span class="line">  name: <span class="string">"ahui"</span>,</span><br><span class="line">  sayname: sayname,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> angeli = &#123;</span><br><span class="line">  name: <span class="string">"angeli"</span>,</span><br><span class="line">  sayname: sayname,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ahui.sayname(); <span class="comment">// ahui</span></span><br><span class="line">angeli.sayname(); <span class="comment">// angeli</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是隐式绑定，不难理解; 回到我们文章的第一句话，<strong>谁调用，指向谁</strong>，这里就分别是 <code>ahui</code> <code>angeli</code> 调用了 <code>sayname</code></p>
+<p>专业一点的说法就是上下文对象，当给函数指定了这个上下文对象时，函数内部的 <code>this</code> 自然指向了这个上下文对象</p>
+<p>在上边例子的基础上，我们再看一个稍微复杂点的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayname</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">"global"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ahui = &#123;</span><br><span class="line">  name: <span class="string">"ahui"</span>,</span><br><span class="line">  sayname: sayname,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ahui.sayname(); <span class="comment">// ahui</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ahuisayname = ahui.sayname;</span><br><span class="line">ahuisayname(); <span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的 ahui.sayname() 很好理解，肯定会打印 ahui ， 但是，当我们把 ahui.sayname 赋给一个新的变量之后， 为啥就变了呢 ？</p>
+<p>这就是常见的<strong>隐式绑定时丢失上下文</strong></p>
+<p>让我们来分析一下上边这个赋值语句：<strong>由于在 javascript 中，函数是对象，对象之间是引用传递，而不是值传递。</strong>  所以这个赋值语句可以理解为 <code>ahuisayname = ahui.sayname = sayname</code>, 也就是 <code>ahuisayname = sayname</code> ,  <code>ahui.sayname</code> 只起了一个桥梁的作用, <code>ahuisayname</code> 最终引用的就是 <code>sayname</code> 函数的地址，而与 <code>ahui</code> 这个对象没有关系了。最终执行 <code>ahuisayname</code> 这个函数，中不过是简单的执行 <code>sayname</code> 这个函数，输出 <code>&#39;global&#39;</code>。</p>
+<p>这里的详细分析，可以看一下这篇文章： <a href="http://www.ruanyifeng.com/blog/2018/06/javascript-this.html" target="_blank" rel="noopener">JavaScript 的 this 原理</a></p>
+<h3 id="显示绑定"><a href="#显示绑定" class="headerlink" title="显示绑定"></a>显示绑定</h3><p>js中提示显示绑定的方法有3个 <code>call</code> <code>apply</code> <code>bind</code></p>
+<p><code>call</code> <code>apply</code> 用法基本相似，就是给函数绑定一个执行上下文，且是显式绑定的。因此，函数内的this自然而然的绑定在了 <code>call</code> 或者 <code>apply</code> 所调用的对象上面。</p>
+<blockquote>
+<p><code>apply(obj,[arg1,arg2,arg3,...]</code> 被调用函数的参数以数组的形式给出<br><code>call(obj,arg1,arg2,arg3,...)</code> 被调用函数的参数依次给出</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 带参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a * num1 + num2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    a: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">count.call(obj1, <span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 4</span></span><br><span class="line">count.apply(obj1, [<span class="number">1</span>, <span class="number">2</span>]) <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">count.call(obj2, <span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 5</span></span><br><span class="line">count.apply(obj2, [<span class="number">1</span>, <span class="number">2</span>]) <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+
+<p><code>bind</code> 方法只是返回了一个新的函数，这个函数内的 <code>this</code> 指定了执行上下文，而返回这个新函数可以接受参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 带参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">count</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a * num1 + num2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bound1 = count.bind(obj1) <span class="comment">// 未指定参数</span></span><br><span class="line">bound1(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bound2 = count.bind(obj1, <span class="number">1</span>) <span class="comment">// 指定了一个参数</span></span><br><span class="line">bound2(<span class="number">2</span>) <span class="comment">// 4 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bound3 = count.bind(obj1, <span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 指定了两个参数</span></span><br><span class="line">bound3() <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bound4 = count.bind(obj1, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 指定了多余的参数,多余的参数会被忽略</span></span><br><span class="line">bound4() <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h3><p>最后要讲的一种 <code>this</code> 绑定规则，是指通过 <code>new</code> 操作符调用构造函数时发生的 <code>this</code> 绑定。首先要明确一点的是，在 javascript 中并没有其他语言那样的类的概念。构造函数也仅仅是普通的函数而已，只不过构造函数的函数名以大写字母开头，也只不过它可以通过 <code>new</code> 操作符调用而已.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"我也只不过是个普通函数"</span>)</span><br><span class="line">&#125;</span><br><span class="line">Person(<span class="string">"ahui"</span>,<span class="number">18</span>) <span class="comment">// "我也只不过是个普通函数"</span></span><br><span class="line"><span class="built_in">console</span>.log(name) <span class="comment">// "ahui"</span></span><br><span class="line"><span class="built_in">console</span>.log(age) <span class="comment">// 18</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> zxt = <span class="keyword">new</span> Person(<span class="string">"angeli"</span>,<span class="number">22</span>) <span class="comment">// "我也只不过是个普通函数"</span></span><br><span class="line"><span class="built_in">console</span>.log(zxt.name) <span class="comment">// "angeli"</span></span><br><span class="line"><span class="built_in">console</span>.log(zxt.age) <span class="comment">// 22</span></span><br></pre></td></tr></table></figure>
+
+<p>上面这个例子中，首先定义了一个 <code>Person</code> 函数，既可以普通调用，也可以以构造函数的形式的调用。</p>
+<p>当普通调用时，则按照正常的函数执行，输出一个字符串。 </p>
+<p>如果是通过一个 <code>new</code> 操作符,则构造了一个新的对象。</p>
+<p>那么，接下来我们再看看两种调用方式， <code>this</code> 分别绑定在了何处首先普通调用时，前面已经介绍过，此时应用默认绑定规则，<code>this</code> 绑定在了全局对象上，此时全局对象上会分别增加 name 和 age 两个属性。当通过 <code>new</code> 操作符调用时，函数会返回一个对象，从输出结果上来看 <code>this</code> 对象绑定在了这个返回的对象上。</p>
+<p>因此，所谓的 <code>new</code> 绑定是指通过 <code>new</code> 操作符来调用函数时，会产生一个新对象，并且会把构造函数内的 <code>this</code> 绑定到这个对象上。</p>
+<p>事实上，在javascript中，使用 <code>new</code> 来调用函数，会自动执行下面的操作。详情可看这里： <a href="/3315289936.html">new 一个对象的过程</a></p>
+<blockquote>
+<ol>
+<li>创建一个全新的对象</li>
+<li>这个新对象会被执行原型连接</li>
+<li>这个新对象会绑定到函数调用的this</li>
+<li>如果函数没有返回其他对象，那么new表达式中的函数调用会自动返回这个新对象</li>
+</ol>
+</blockquote>
+<h3 id="四种绑定的优先级"><a href="#四种绑定的优先级" class="headerlink" title="四种绑定的优先级"></a>四种绑定的优先级</h3><p>上面讲述了javascript中四种this绑定规则，这四种绑定规则基本上涵盖了所有函数调用情况。但是如果同时应用了这四种规则中的两种甚至更多，又该是怎么样的一个情况，或者说这四种绑定的优先级顺序又是怎么样的。</p>
+<p>首先，很容易理解，默认绑定的优先级是最低的。这是因为只有在无法应用其他this绑定规则的情况下，才会调用默认绑定。那隐式绑定和显式绑定呢？还是上代码吧，代码可从来不会说谎。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">speak</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    name: <span class="string">'obj1'</span>,</span><br><span class="line">    speak: speak</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    name: <span class="string">'obj2'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj1.speak() <span class="comment">// obj1 (1)</span></span><br><span class="line">obj1.speak.call(obj2) <span class="comment">// obj2 (2)</span></span><br></pre></td></tr></table></figure>
+
+<p>所以在上面代码中，执行了obj1.speak(),speak函数内部的this指向了obj1，因此(1)处代码输出的当然就是obj1，但是当显式绑定了speak函数内的this到obj2上，输出结果就变成了obj2，所有从这个结果可以看出显式绑定的优先级是要高于隐式绑定的。</p>
+<p>事实上我们可以这么理解obj1.speak.call(obj2)这行代码，obj1.speak只是间接获得了speak函数的引用，这就有点像前面所说的隐式绑定丢失了上下文。</p>
+<p>好，既然显式绑定的优先级要高于隐式绑定，那么接下来再来比较一下new 绑定和显式绑定。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">something</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.a = something</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj1 = &#123;&#125;</span><br><span class="line"><span class="keyword">var</span> bar = foo.bind(obj1)  <span class="comment">// 返回一个新函数bar，这个新函数内的this指向了obj1  (1)</span></span><br><span class="line">bar(<span class="number">2</span>) <span class="comment">// this绑定在了Obj1上，所以obj1.a === 2</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baz = <span class="keyword">new</span> bar(<span class="number">3</span>)  <span class="comment">// 调用new 操作符后，bar函数的this指向了返回的新实例baz  (2)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1.a)</span><br><span class="line"><span class="built_in">console</span>.log(baz.a)</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到，在(1)处，bar函数内部的this原本指向的是obj1，但是在(2)处，由于经过了new操作符调用，bar函数内部的this却重新指向了返回的实例，这就可以说明new 绑定的优先级是要高于显式绑定的。</p>
+<p>至此，四种绑定规则的优先级排序就已经得出了,分别是</p>
+<blockquote>
+<p>new 绑定 &gt; 显式绑定 &gt; 隐式绑定 &gt; 默认绑定</p>
+</blockquote>
+<h3 id="箭头函数中的this绑定"><a href="#箭头函数中的this绑定" class="headerlink" title="箭头函数中的this绑定"></a>箭头函数中的this绑定</h3><p>箭头函数是ES6里一个重要的特性。</p>
+<p>箭头函数的 <code>this</code> 是根据外层的（函数或者全局）作用域来决定的。函数体内的 <code>this</code> 对象指的是定义时所在的对象，而不是之前介绍的调用时绑定的对象。举一个例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a) <span class="comment">// 定义在全局对象中，因此this绑定在全局作用域</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">foo() <span class="comment">// 1 ,在全局对象中调用</span></span><br><span class="line">foo.call(obj) <span class="comment">// 1,显示绑定，由obj对象来调用，但根本不影响结果</span></span><br></pre></td></tr></table></figure>
+
+<p>从上面这个例子看出，箭头函数的 <code>this</code> 强制性的绑定在了箭头函数定义时所在的作用域，而且无法通过显示绑定，如 <code>apply,call</code> 方法来修改。</p>
+<p>再来看下面这个例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age </span><br><span class="line">    <span class="keyword">this</span>.speak = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">        <span class="comment">// 普通函数（非箭头函数),this绑定在调用时的作用域</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.bornYear = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 本文写于2020年，因此new Date().getFullYear()得到的是2020</span></span><br><span class="line">        <span class="comment">// 箭头函数，this绑定在实例内部</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="keyword">this</span>.age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ahui = <span class="keyword">new</span> Person(<span class="string">"ahui"</span>,<span class="number">28</span>)</span><br><span class="line"></span><br><span class="line">ahui.speak() <span class="comment">// "ahui"</span></span><br><span class="line">ahui.bornYear() <span class="comment">// 1992</span></span><br><span class="line"><span class="comment">// 到这里应该大家应该都没什么问题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> angeli = &#123;</span><br><span class="line">    name: <span class="string">"angeli"</span>,</span><br><span class="line">    age: <span class="number">18</span>  <span class="comment">// 永远18岁</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ahui.speak.call(angeli)</span><br><span class="line"><span class="comment">// "angeli" this绑定的是angeli这个对象</span></span><br><span class="line"></span><br><span class="line">ahui.bornYear.call(angeli)</span><br><span class="line"><span class="comment">// 1992 而不是 2002,这是因为this永远绑定的是ahui这个实例</span></span><br></pre></td></tr></table></figure>
+
+<p>因此 ES6 的箭头函数并不会使用四条标准的绑定规则，而是根据当前的词法作用域来决定 <code>this</code> ，具体来说就是，箭头函数会继承 外层函数调用的 <code>this</code> 绑定 ，而无论外层函数的 <code>this</code> 绑定到哪里。</p>
+<p>小结<br>以上就是javascript中所有this绑定的情况，在es6之前，前面所说的四种绑定规则可以涵盖任何的函数调用情况，es6标准实施以后，对于函数的扩展新增了箭头函数，与之前不同的是，箭头函数的作用域位于箭头函数定义时所在的作用域。</p>
+<p>而对于之前的四种绑定规则来说，掌握每种规则的调用条件就能很好的理解this到底是绑定在了哪个作用域。</p>
+<p>原文地址： <a href="https://segmentfault.com/a/1190000007101339" target="_blank" rel="noopener">JavaScript中this绑定详解</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+              <a href="/tags/web/" rel="tag"># web</a>
+              <a href="/tags/this/" rel="tag"># this</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/3369490582.html" rel="prev" title="JS typeof instanceof 你应该知道这么多">
+      <i class="fa fa-chevron-left"></i> JS typeof instanceof 你应该知道这么多
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/3152193188.html" rel="next" title="浏览器 地址栏回车 性能优化">
+      浏览器 地址栏回车 性能优化 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#默认绑定"><span class="nav-number">1.</span> <span class="nav-text">默认绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式绑定"><span class="nav-number">2.</span> <span class="nav-text">隐式绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示绑定"><span class="nav-number">3.</span> <span class="nav-text">显示绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new-绑定"><span class="nav-number">4.</span> <span class="nav-text">new 绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四种绑定的优先级"><span class="nav-number">5.</span> <span class="nav-text">四种绑定的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数中的this绑定"><span class="nav-number">6.</span> <span class="nav-text">箭头函数中的this绑定</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">李鹏辉</p>
+  <div class="site-description" itemprop="description">30岁才开始写的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李鹏辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
