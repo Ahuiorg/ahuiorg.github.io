@@ -1,1085 +1,268 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"didiorg.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="30岁才开始写的博客">
-<meta name="keywords" content="辉博客,阿辉博客,阿辉的个人博客,ES6,JS,WEB,web,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>.org Blog - Penghui's Blog</title><meta name="keywords" content="辉博客,阿辉博客,阿辉的个人博客,ES6,JS,WEB,web,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验"><meta name="author" content="李鹏辉,ahuinet@163.com"><meta name="copyright" content="李鹏辉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习 记录生活 记录成长">
 <meta property="og:type" content="website">
 <meta property="og:title" content=".org Blog">
 <meta property="og:url" content="http://didiorg.com/page/2/index.html">
 <meta property="og:site_name" content=".org Blog">
-<meta property="og:description" content="30岁才开始写的博客">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="记录学习 记录生活 记录成长">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="李鹏辉">
+<meta property="article:tag" content="辉博客,阿辉博客,阿辉的个人博客,ES6,JS,WEB,web,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=".org Blog">
-<meta name="twitter:description" content="30岁才开始写的博客">
-
-<link rel="canonical" href="http://didiorg.com/page/2/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>.org Blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://didiorg.com/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '.org Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-08-14 12:08:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-<link rel="alternate" href="/atom.xml" title=".org Blog" type="application/atom+xml">
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">.org Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">Penghui's Blog</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/1909019848.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/1909019848.html" class="post-title-link" itemprop="url">js 多维数组(数独)扁平化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-07 12:25:27" itemprop="dateCreated datePublished" datetime="2020-06-07T12:25:27+08:00">2020-06-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[1, 2, 3, [4, 5, 6, [7, 8], 9], 10] =&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1909019848.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/3012898819.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/3012898819.html" class="post-title-link" itemprop="url">JS 原型链继承问题拓展</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-13 22:35:34" itemprop="dateCreated datePublished" datetime="2020-03-13T22:35:34+08:00">2020-03-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>原型链继承存在的问题</strong>：</p>
-<ol>
-<li><p>包含引用类型的原型属性会被所有实例共享，这会导致对一个实例的修改会影响到另一个实例。在通过原型来实现继承时，原型实际上会变成另一个类型的实例。原先的实例属性就变成了现在的原型属性</p>
-</li>
-<li><p>在创建了类型的实例时，不能向超类型的构造函数中传递参数</p>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/3012898819.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/2410320999.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2410320999.html" class="post-title-link" itemprop="url">前端进阶 精选20道面试题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-07 14:43:51" itemprop="dateCreated datePublished" datetime="2020-03-07T14:43:51+08:00">2020-03-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端进阶/" itemprop="url" rel="index"><span itemprop="name">前端进阶</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-new-的实现原理"><a href="#1-new-的实现原理" class="headerlink" title="1. new 的实现原理"></a>1. new 的实现原理</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2410320999.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/464566509.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/464566509.html" class="post-title-link" itemprop="url">js Promise / Generator / await async</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-03 23:02:31" itemprop="dateCreated datePublished" datetime="2020-03-03T23:02:31+08:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>Promise 是用来解决函数回调嵌套的， async、await 是用来解决逻辑上的函数依赖的。</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/464566509.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/1508208186.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/1508208186.html" class="post-title-link" itemprop="url">nginx 常用配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-03 14:40:00" itemprop="dateCreated datePublished" datetime="2020-03-03T14:40:00+08:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/3152193188.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/3152193188.html" class="post-title-link" itemprop="url">浏览器 地址栏回车 性能优化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-02 19:31:18" itemprop="dateCreated datePublished" datetime="2020-03-02T19:31:18+08:00">2020-03-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Enter"><a href="#Enter" class="headerlink" title="Enter"></a>Enter</h2><h3 id="1-输入地址"><a href="#1-输入地址" class="headerlink" title="1. 输入地址"></a>1. 输入地址</h3><p>比如： didiorg.com/</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/3152193188.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/3915840815.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/3915840815.html" class="post-title-link" itemprop="url">JS this</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-01 21:18:26" itemprop="dateCreated datePublished" datetime="2020-03-01T21:18:26+08:00">2020-03-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>有关于<code>this</code> ，我们说得最多的一句话就是<strong>谁调用，指向谁</strong>；也就是</p>
-<blockquote>
-<p>this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/3915840815.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/3369490582.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/3369490582.html" class="post-title-link" itemprop="url">JS typeof instanceof 你应该知道这么多</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-01 13:05:34" itemprop="dateCreated datePublished" datetime="2020-03-01T13:05:34+08:00">2020-03-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="typeof主要是用来判断一个变量的类型"><a href="#typeof主要是用来判断一个变量的类型" class="headerlink" title="typeof主要是用来判断一个变量的类型"></a><code>typeof</code>主要是用来判断一个变量的类型</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/3369490582.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/1882318475.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/1882318475.html" class="post-title-link" itemprop="url">JS 函数实参转换为数组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-29 20:49:38" itemprop="dateCreated datePublished" datetime="2020-02-29T20:49:38+08:00">2020-02-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>实际参数在函数中我们可以使用 arguments 对象获得 （注：形参可通过 arguments.callee 获得），虽然 arguments 对象与数组形似，但仍不是真正意义上的数组。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/1882318475.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://didiorg.com/3315289936.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="李鹏辉">
-      <meta itemprop="description" content="30岁才开始写的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content=".org Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/3315289936.html" class="post-title-link" itemprop="url">JS new 一个对象的过程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-29 19:36:50" itemprop="dateCreated datePublished" datetime="2020-02-29T19:36:50+08:00">2020-02-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-03 00:09:10" itemprop="dateModified" datetime="2020-11-03T00:09:10+08:00">2020-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端基础/" itemprop="url" rel="index"><span itemprop="name">前端基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先让我回忆一下创建对象的三种方法</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/3315289936.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">李鹏辉</p>
-  <div class="site-description" itemprop="description">30岁才开始写的博客</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title=".org Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1475669698648-2f144fcaaeb1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">.org Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">.org Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/1720814833/" title="d0"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="d0"></a></div><div class="recent-post-info"><a class="article-title" href="/1720814833/" title="d0">d0</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-11T06:16:56.000Z" title="发表于 2022-07-11 14:16:56">2022-07-11</time></span></div><div class="content">背景
+前端项目日益复杂，功能多
+业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍
+
+理解
+是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责
+
+核心点
+建模，建模是整个ddd最重要的部分
+
+需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的
 
 
 
-      </div>
+前端建模核心思想：分层思想（Layered Architecture）​	比如一些常见的想法：
 
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+定义业务对象
+控制数据流
+界面渲染
+用户交互��染
+用户交互
 
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">李鹏辉</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
-        
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/4288208203/" title="d3"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-10.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="d3"></a></div><div class="recent-post-info"><a class="article-title" href="/4288208203/" title="d3">d3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-11T06:16:56.000Z" title="发表于 2022-07-11 14:16:56">2022-07-11</time></span></div><div class="content">如何打造更稳健的前端业务模块代码组织形式文章出处：如何打造更稳健的前端业务模块代码组织形式业务系统和一般的应用有非常大的不同，一般的应用以提供给公司&#x2F;企业外的用户（消费者、普通玩家）提供服务，以完成2C的销售目的，而业务系统一般是2B或者自身消费的模式，完成的是自身业务的管理目标。所以，应用侧重服务，业务系统侧重管理。两者的不同，导致我们对项目开发中，代码的组织方式会有差别。2C应用要满足大量用户在使用时的舒适性，因此要提高项目中有关性能、用户体验、效果等方面的要求，以吸引用户付费。但业务系统则稍有差别，虽然系统的使用体验也很重要，但是不是占最重要的部分，业务系统最重要的部分，是必须保证用户看到的数据、流程等，必须与真实的业务、业务流程一致，否则会带来自身利益的损失，因此，在稳健性、安全性等方面要求更高。
+本文主要站在稳健性这个角度，试图阐述，在业务系统中，如何去安排或组织我们的（前端）代码，才能保证符合业务系统特征要求，且有利于长期可持续维护下去。由于谈系统过大，那么，本文只立足于一个业务模块来进行阐述。
+什么是业务模块？首先，什么是业务系统？在这之前，又必须回答什么是业务 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/1579271507/" title="学习计划"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="学习计划"></a></div><div class="recent-post-info"><a class="article-title" href="/1579271507/" title="学习计划">学习计划</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-22T11:46:41.000Z" title="发表于 2021-08-22 19:46:41">2021-08-22</time></span></div><div class="content">xie
 
 
+ 
+8.22
+
+ JS第七章
+ Vue（一期）：	第十五章项目实战-页面骨架开发（60min）
 
 
+ 
+8.23
+
+ 第十六章 -head组件开发 
+ 1-2（20min） 3-8（70min） 9-16（90min）
 
 
+ 
+8.24
+
+ 第十七章 -goods商品列表开发 1-5（50min） 6-8（40min） 9-14（70min）15-17（35min）
 
 
-      </div>
-    </footer>
-  </div>
+ 
+8.25
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script>
+ 第十七章 -goods商品列表开发 18-20（30min） 21-24（50min）
+ 第十八章 -food商品详情页实现 1-5（60min） 6-11（70min）
 
 
+ 
+8.26
 
-  
-
-
-
-
-
+ 第十八章 -food商品详情页实现 12-17（50min） 12-17（50min）
+ 第十九章 -ratings评价列表页实现 1-3（35min） 4-6（40min）
 
 
+ 
+8.27
+
+ 第二十章 -seller商家详情页实现 1-4（35min） 5-7（30min） 8-11（45min）
+ 第二十一章 项目编译打包（15min）
+ 第二十二章 课程总结（5min）
+ 第二十三章 Vu ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/4175634211/" title="798"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="798"></a></div><div class="recent-post-info"><a class="article-title" href="/4175634211/" title="798">798</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-17T07:30:51.000Z" title="发表于 2021-08-17 15:30:51">2021-08-17</time></span></div><div class="content">798
 
 
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/3752725928/" title="iig"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="iig"></a></div><div class="recent-post-info"><a class="article-title" href="/3752725928/" title="iig">iig</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-08-17T02:43:50.000Z" title="发表于 2021-08-17 10:43:50">2021-08-17</time></span></div><div class="content">IIG
+
+2021年8月16年中总结
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/3258801602/" title="vue常见API原理分析"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue常见API原理分析"></a></div><div class="recent-post-info"><a class="article-title" href="/3258801602/" title="vue常见API原理分析">vue常见API原理分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-04T02:14:41.000Z" title="发表于 2020-07-04 10:14:41">2020-07-04</time></span></div><div class="content">数据绑定
+
+oberserverObject.defineProperty()
+depdep.notify()
+watcheruser-watcher  render-watcher  computed-watcher
+nextTick
+nextTick 会在DOM更新完毕之后执行一个回调，确保我们操作的是更新之后的DOM
+
+vue用异步队列的方式来控制DOM更新和nextTick回调先后执行microtask因为其高优先级特性，能确保队列中的微任务在一次事件循环前被执行完毕因为兼容性问题，vue不得不做了microtask向macrotask的降级方案 (Promise，MutationObserver，setTimeout)
+
+MutationObserver
+
+用于监听DOM修改事件，能够监听到节点的属性，文本内容，子节点等的改动
+
+Event Loop
+
+MutationObserver 每次监听到变更的时候会往 microtask 添加一个事件
+
+降级方案
+
+Promise &#x3D;&gt; MutationObserver &#x3D;&gt; setTimeout
+参 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/148981014/" title="面试记录"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试记录"></a></div><div class="recent-post-info"><a class="article-title" href="/148981014/" title="面试记录">面试记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-04T01:49:04.000Z" title="发表于 2020-07-04 09:49:04">2020-07-04</time></span></div><div class="content">浏览器多进程+多线程DNS寻址方式，DNS 缓存， dns-prefetch建立 tcp&#x2F;ip 链接，三次握手，四次挥手，滑动窗口，接收窗口，收发帧的策略，为什么关闭要等待 2MSL，get post 区别，并发限制传输数据，展开计算机网络 5 层&#x2F;7 层模型，五层：http -&gt; tcp&#x2F;ip -&gt; ip -&gt; data frames -&gt; 物理介质服务器收到请求，负载均衡，tomcat 容器，后端统一拦截过滤展开 http 报文，实体，http 1.0, 1,1 2之间的区别，gzip，长连接&#x2F;短连接，展开 cookie 及优化，多子域名拆分等展开 https 中 SSL&#x2F;TLS 链接步骤展开 http 缓存，强缓存，协商缓存，from memory&#x2F;disk cache等DOM 树的构建过程，bytes -&gt; characters -&gt; tokens -&gt; nodes -&gt; DOMcss rule tree: bytes -&gt; characters -&gt; tok ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/677899705/" title="vue 父子组件的生命周期顺序"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue 父子组件的生命周期顺序"></a></div><div class="recent-post-info"><a class="article-title" href="/677899705/" title="vue 父子组件的生命周期顺序">vue 父子组件的生命周期顺序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-03T16:18:42.000Z" title="发表于 2020-07-04 00:18:42">2020-07-04</time></span></div><div class="content">加载渲染过程
+
+同步加载父组件 beforeCreate,  created, beforMount子组件 beforeCreate, created, beforMount孙子组件 beforeCreate, created, beforMount孙子组件 mounted子组件 mounted父组件 mounted
+异步加载父组件 beforeCreate, created, beforMount, mounted子组件 beforeCreate, created, beforMount, mounted
+更新过程父组件 beforeUpdate子组件 beforeUpdate子组件 updated父组件 updated
+销毁过程父组件 beforeDestroy子组件 beforeDestroy子组件 destroyed父组件 destroyed
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/3671102502/" title="JS 普通函数跟箭头函数的区别"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS 普通函数跟箭头函数的区别"></a></div><div class="recent-post-info"><a class="article-title" href="/3671102502/" title="JS 普通函数跟箭头函数的区别">JS 普通函数跟箭头函数的区别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-03T15:31:38.000Z" title="发表于 2020-07-03 23:31:38">2020-07-03</time></span></div><div class="content">
+箭头函数不会产生this, 会捕捉当前的执行上下文中的this当做自己的this
+
+箭头函数不能做为构造函数
+
+箭头函数不能绑定 arguments 
+
+call&#x2F;apply&#x2F;bind 对箭头函数不起作用
+
+箭头函数没有原型属性
+
+箭头函数不能当作 Generator 函数，不能使用 yield 关键字
 
 
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/979881800/" title="JS 常见手撕代码题"><img class="post_bg" src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS 常见手撕代码题"></a></div><div class="recent-post-info"><a class="article-title" href="/979881800/" title="JS 常见手撕代码题">JS 常见手撕代码题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-06-17T14:18:36.000Z" title="发表于 2020-06-17 22:18:36">2020-06-17</time></span></div><div class="content">这种题目，除了多练，没别的方法
 
 
-
-
-  
-
-  
-
-</body>
-</html>
+1. 实现一个类似 emiter 的类123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778class EventEmiter &#123;  constructor() &#123;    this.emiterMap = &#123;&#125;  &#125;  on(event, callback) &#123;    if (this.emiterMap[event]) &#123;      this.emiterMap[event].push(callback)    &#125; else &#123;      this.emiterMap[event] = [callback]    &#125;  &#125;  emit() &#123;    let [event, ...args] =  ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">李鹏辉</div><div class="author-info__description">记录学习 记录生活 记录成长</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/1224102205/" title="cli"><img src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-8.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="cli"/></a><div class="content"><a class="title" href="/1224102205/" title="cli">cli</a><time datetime="2022-07-24T15:47:13.000Z" title="发表于 2022-07-24 23:47:13">2022-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/1509574496/" title="fix"><img src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="fix"/></a><div class="content"><a class="title" href="/1509574496/" title="fix">fix</a><time datetime="2022-07-15T15:13:23.000Z" title="发表于 2022-07-15 23:13:23">2022-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/3437106334/" title="output"><img src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="output"/></a><div class="content"><a class="title" href="/3437106334/" title="output">output</a><time datetime="2022-07-15T02:39:12.000Z" title="发表于 2022-07-15 10:39:12">2022-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/432881407/" title="life"><img src="https://fastly.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="life"/></a><div class="content"><a class="title" href="/432881407/" title="life">life</a><time datetime="2022-07-12T11:54:38.000Z" title="发表于 2022-07-12 19:54:38">2022-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/1342917158/" title="watch"><img src="https://fastly.jsdelivr.net/gh/jerryc127/CDN/img/material-5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="watch"/></a><div class="content"><a class="title" href="/1342917158/" title="watch">watch</a><time datetime="2022-07-12T08:41:19.000Z" title="发表于 2022-07-12 16:41:19">2022-07-12</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/bugfix/"><span class="card-category-list-name">bugfix</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/fit/"><span class="card-category-list-name">fit</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/learning-notes/"><span class="card-category-list-name">learning notes</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/tools/"><span class="card-category-list-name">tools</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"><span class="card-category-list-name">前端基础</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/"><span class="card-category-list-name">前端进阶</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%91%84%E5%BD%B1/"><span class="card-category-list-name">摄影</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/ES6/" style="font-size: 1.1em; color: #999">ES6</a> <a href="/tags/array/" style="font-size: 1.2em; color: #999da3">array</a> <a href="/tags/dom/" style="font-size: 1.1em; color: #999">dom</a> <a href="/tags/hello/" style="font-size: 1.1em; color: #999">hello</a> <a href="/tags/hexo/" style="font-size: 1.1em; color: #999">hexo</a> <a href="/tags/js/" style="font-size: 1.5em; color: #99a9bf">js</a> <a href="/tags/js-%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">js 基础</a> <a href="/tags/js-%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">js 算法</a> <a href="/tags/js%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">js算法</a> <a href="/tags/lightroom/" style="font-size: 1.1em; color: #999">lightroom</a> <a href="/tags/react/" style="font-size: 1.1em; color: #999">react</a> <a href="/tags/ski/" style="font-size: 1.1em; color: #999">ski</a> <a href="/tags/this/" style="font-size: 1.1em; color: #999">this</a> <a href="/tags/vue/" style="font-size: 1.2em; color: #999da3">vue</a> <a href="/tags/vue-%E5%8E%9F%E7%90%86/" style="font-size: 1.1em; color: #999">vue 原理</a> <a href="/tags/vuex/" style="font-size: 1.1em; color: #999">vuex</a> <a href="/tags/web/" style="font-size: 1.4em; color: #99a5b6">web</a> <a href="/tags/webpack/" style="font-size: 1.1em; color: #999">webpack</a> <a href="/tags/%E5%81%A5%E8%BA%AB/" style="font-size: 1.2em; color: #999da3">健身</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 1.1em; color: #999">性能优化</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 1.3em; color: #99a1ac">浏览器</a> <a href="/tags/%E7%BC%93%E5%AD%98/" style="font-size: 1.1em; color: #999">缓存</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">八月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">六月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">三月 2020</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/02/"><span class="card-archive-list-date">二月 2020</span><span class="card-archive-list-count">13</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">一月 2020</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/11/"><span class="card-archive-list-date">十一月 2019</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">52</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-08-14T04:08:58.261Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 李鹏辉</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
