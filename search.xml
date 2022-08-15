@@ -479,33 +479,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>d0</title>
-    <url>//1720814833/</url>
-    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol>
-<li>前端项目日益复杂，功能多</li>
-<li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li>
-</ol>
-<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol>
-<li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li>
-</ol>
-<h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol>
-<li><p>建模，建模是整个ddd最重要的部分</p>
-<blockquote>
-<p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​	比如一些常见的想法：</p>
-<ol>
-<li>定义业务对象</li>
-<li>控制数据流</li>
-<li>界面渲染</li>
-<li>用户交互��染</li>
-<li>用户交互</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>d4</title>
     <url>//1643923690/</url>
     <content><![CDATA[<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><p>领域驱动设计（domain-driven-design）是软件代码的结构及语言需要符合<strong>业务领域</strong>中的习惯用法</p>
@@ -557,6 +530,33 @@
 <li><a href="http://qinghua.github.io/ddd/">DDD</a></li>
 </ol>
 <p>hua.github.io&#x2F;ddd&#x2F;)</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>d0</title>
+    <url>//1720814833/</url>
+    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol>
+<li>前端项目日益复杂，功能多</li>
+<li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li>
+</ol>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol>
+<li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li>
+</ol>
+<h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol>
+<li><p>建模，建模是整个ddd最重要的部分</p>
+<blockquote>
+<p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​	比如一些常见的想法：</p>
+<ol>
+<li>定义业务对象</li>
+<li>控制数据流</li>
+<li>界面渲染</li>
+<li>用户交互��染</li>
+<li>用户交互</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
