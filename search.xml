@@ -469,33 +469,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>d0</title>
-    <url>//1720814833/</url>
-    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol>
-<li>前端项目日益复杂，功能多</li>
-<li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li>
-</ol>
-<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol>
-<li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li>
-</ol>
-<h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol>
-<li><p>建模，建模是整个ddd最重要的部分</p>
-<blockquote>
-<p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​	比如一些常见的想法：</p>
-<ol>
-<li>定义业务对象</li>
-<li>控制数据流</li>
-<li>界面渲染</li>
-<li>用户交互��染</li>
-<li>用户交互</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>d4</title>
     <url>//1643923690/</url>
     <content><![CDATA[<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><p>领域驱动设计（domain-driven-design）是软件代码的结构及语言需要符合<strong>业务领域</strong>中的习惯用法</p>
@@ -557,6 +530,33 @@
 <p>马丁把功能（职责）定义为：“改变的原因”，并且总结出一个类或者模块应该有且只有一个改变的原因。一个具体的例子就是，想象有一个用于编辑和打印报表的模块。这样的一个模块存在两个改变的原因。第一，报表的内容可以改变（编辑）。第二，报表的格式可以改变（打印）。这两方面的改变会因为完全不同的起因而发生：一个是本质的修改，一个是表面的修改。单一功能原则认为这两方面的问题事实上是两个分离的功能，因此他们应该分离在不同的类或者模块里。把有不同的改变原因的事物耦合在一起的设计是糟糕的。</p>
 <p>保持一个类专注于单一功能点上的一个重要的原因是，它会使得类更加的健壮。继续上面的例子，如果有一个对于报表编辑流程的修改，那么将存在极大的危险性，因为假设这两个功能存在于同一个类中，修改报表的编辑流程会导致公共状态或者依赖关系的改变，打印功能的代码会因此不工作。</p>
 <p>因此不工作。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>d0</title>
+    <url>//1720814833/</url>
+    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol>
+<li>前端项目日益复杂，功能多</li>
+<li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li>
+</ol>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol>
+<li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li>
+</ol>
+<h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol>
+<li><p>建模，建模是整个ddd最重要的部分</p>
+<blockquote>
+<p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​	比如一些常见的想法：</p>
+<ol>
+<li>定义业务对象</li>
+<li>控制数据流</li>
+<li>界面渲染</li>
+<li>用户交互��染</li>
+<li>用户交互</li>
+</ol>
 ]]></content>
   </entry>
   <entry>

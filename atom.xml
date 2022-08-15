@@ -168,28 +168,6 @@
   </entry>
   
   <entry>
-    <title>d0</title>
-    <link href="https://leejs.cn/1720814833/"/>
-    <id>https://leejs.cn/1720814833/</id>
-    <published>2022-07-11T06:16:56.000Z</published>
-    <updated>2022-08-02T02:40:21.713Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol><li>前端项目日益复杂，功能多</li><li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li></ol><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol><li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li></ol><h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol><li><p>建模，建模是整个ddd最重要的部分</p><blockquote><p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p></blockquote></li></ol><h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​比如一些常见的想法：</p><ol><li>定义业务对象</li><li>控制数据流</li><li>界面渲染</li><li>用户交互��染</li><li>用户交互</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;前端项目日益复杂，功能多&lt;/li&gt;
-&lt;li&gt;业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>d4</title>
     <link href="https://leejs.cn/1643923690/"/>
     <id>https://leejs.cn/1643923690/</id>
@@ -222,6 +200,28 @@
       
       
     <summary type="html">&lt;h2 id=&quot;单一功能原则&quot;&gt;&lt;a href=&quot;#单一功能原则&quot; class=&quot;headerlink&quot; title=&quot;单一功能原则&quot;&gt;&lt;/a&gt;单一功能原则&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%9</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>d0</title>
+    <link href="https://leejs.cn/1720814833/"/>
+    <id>https://leejs.cn/1720814833/</id>
+    <published>2022-07-11T06:16:56.000Z</published>
+    <updated>2022-08-02T02:40:21.713Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol><li>前端项目日益复杂，功能多</li><li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li></ol><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol><li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li></ol><h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol><li><p>建模，建模是整个ddd最重要的部分</p><blockquote><p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p></blockquote></li></ol><h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​比如一些常见的想法：</p><ol><li>定义业务对象</li><li>控制数据流</li><li>界面渲染</li><li>用户交互��染</li><li>用户交互</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;前端项目日益复杂，功能多&lt;/li&gt;
+&lt;li&gt;业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功</summary>
       
     
     
