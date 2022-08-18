@@ -127,8 +127,16 @@
       </tags>
   </entry>
   <entry>
+    <title>年年一岁前</title>
+    <url>//1066195193/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>photo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TS入门</title>
-    <url>//undefined/</url>
+    <url>//2742505907/</url>
     <content><![CDATA[<h2 id="什么是-TypeScript"><a href="#什么是-TypeScript" class="headerlink" title="什么是 TypeScript"></a>什么是 TypeScript</h2><p>TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的面向对象编程。</p>
 <blockquote>
 <p>简而言之，TypeScript是JavaScript的超集，具有可选的类型并可以编译为纯JavaScript。从技术上讲TypeScript就是具有静态类型的 JavaScript 。</p>
@@ -614,14 +622,20 @@
 </ul>
 <h3 id="compilerOptions-选项"><a href="#compilerOptions-选项" class="headerlink" title="compilerOptions 选项"></a>compilerOptions 选项</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line"></span><br><span class="line">    /* 基本选项 */</span><br><span class="line">    &quot;target&quot;: &quot;es5&quot;,                       // 指定 ECMAScript 目标版本: &#x27;ES3&#x27; (default), &#x27;ES5&#x27;, &#x27;ES6&#x27;/&#x27;ES2015&#x27;, &#x27;ES2016&#x27;, &#x27;ES2017&#x27;, or &#x27;ESNEXT&#x27;</span><br><span class="line">    &quot;module&quot;: &quot;commonjs&quot;,                  // 指定使用模块: &#x27;commonjs&#x27;, &#x27;amd&#x27;, &#x27;system&#x27;, &#x27;umd&#x27; or &#x27;es2015&#x27;</span><br><span class="line">    &quot;lib&quot;: [],                             // 指定要包含在编译中的库文件</span><br><span class="line">    &quot;allowJs&quot;: true,                       // 允许编译 javascript 文件</span><br><span class="line">    &quot;checkJs&quot;: true,                       // 报告 javascript 文件中的错误</span><br><span class="line">    &quot;jsx&quot;: &quot;preserve&quot;,                     // 指定 jsx 代码的生成: &#x27;preserve&#x27;, &#x27;react-native&#x27;, or &#x27;react&#x27;</span><br><span class="line">    &quot;declaration&quot;: true,                   // 生成相应的 &#x27;.d.ts&#x27; 文件</span><br><span class="line">    &quot;sourceMap&quot;: true,                     // 生成相应的 &#x27;.map&#x27; 文件</span><br><span class="line">    &quot;outFile&quot;: &quot;./&quot;,                       // 将输出文件合并为一个文件</span><br><span class="line">    &quot;outDir&quot;: &quot;./&quot;,                        // 指定输出目录</span><br><span class="line">    &quot;rootDir&quot;: &quot;./&quot;,                       // 用来控制输出目录结构 --outDir.</span><br><span class="line">    &quot;removeComments&quot;: true,                // 删除编译后的所有的注释</span><br><span class="line">    &quot;noEmit&quot;: true,                        // 不生成输出文件</span><br><span class="line">    &quot;importHelpers&quot;: true,                 // 从 tslib 导入辅助工具函数</span><br><span class="line">    &quot;isolatedModules&quot;: true,               // 将每个文件做为单独的模块 （与 &#x27;ts.transpileModule&#x27; 类似）.</span><br><span class="line"></span><br><span class="line">    /* 严格的类型检查选项 */</span><br><span class="line">    &quot;strict&quot;: true,                        // 启用所有严格类型检查选项</span><br><span class="line">    &quot;noImplicitAny&quot;: true,                 // 在表达式和声明上有隐含的 any类型时报错</span><br><span class="line">    &quot;strictNullChecks&quot;: true,              // 启用严格的 null 检查</span><br><span class="line">    &quot;noImplicitThis&quot;: true,                // 当 this 表达式值为 any 类型的时候，生成一个错误</span><br><span class="line">    &quot;alwaysStrict&quot;: true,                  // 以严格模式检查每个模块，并在每个文件里加入 &#x27;use strict&#x27;</span><br><span class="line"></span><br><span class="line">    /* 额外的检查 */</span><br><span class="line">    &quot;noUnusedLocals&quot;: true,                // 有未使用的变量时，抛出错误</span><br><span class="line">    &quot;noUnusedParameters&quot;: true,            // 有未使用的参数时，抛出错误</span><br><span class="line">    &quot;noImplicitReturns&quot;: true,             // 并不是所有函数里的代码都有返回值时，抛出错误</span><br><span class="line">    &quot;noFallthroughCasesInSwitch&quot;: true,    // 报告 switch 语句的 fallthrough 错误。（即，不允许 switch 的 case 语句贯穿）</span><br><span class="line"></span><br><span class="line">    /* 模块解析选项 */</span><br><span class="line">    &quot;moduleResolution&quot;: &quot;node&quot;,            // 选择模块解析策略： &#x27;node&#x27; (Node.js) or &#x27;classic&#x27; (TypeScript pre-1.6)</span><br><span class="line">    &quot;baseUrl&quot;: &quot;./&quot;,                       // 用于解析非相对模块名称的基目录</span><br><span class="line">    &quot;paths&quot;: &#123;&#125;,                           // 模块名到基于 baseUrl 的路径映射的列表</span><br><span class="line">    &quot;rootDirs&quot;: [],                        // 根文件夹列表，其组合内容表示项目运行时的结构内容</span><br><span class="line">    &quot;typeRoots&quot;: [],                       // 包含类型声明的文件列表</span><br><span class="line">    &quot;types&quot;: [],                           // 需要包含的类型声明文件名列表</span><br><span class="line">    &quot;allowSyntheticDefaultImports&quot;: true,  // 允许从没有设置默认导出的模块中默认导入。</span><br><span class="line"></span><br><span class="line">    /* Source Map Options */</span><br><span class="line">    &quot;sourceRoot&quot;: &quot;./&quot;,                    // 指定调试器应该找到 TypeScript 文件而不是源文件的位置</span><br><span class="line">    &quot;mapRoot&quot;: &quot;./&quot;,                       // 指定调试器应该找到映射文件而不是生成文件的位置</span><br><span class="line">    &quot;inlineSourceMap&quot;: true,               // 生成单个 soucemaps 文件，而不是将 sourcemaps 生成不同的文件</span><br><span class="line">    &quot;inlineSources&quot;: true,                 // 将代码与 sourcemaps 生成到一个文件中，要求同时设置了 --inlineSourceMap 或 --sourceMap 属性</span><br><span class="line"></span><br><span class="line">    /* 其他选项 */</span><br><span class="line">    &quot;experimentalDecorators&quot;: true,        // 启用装饰器</span><br><span class="line">    &quot;emitDecoratorMetadata&quot;: true          // 为装饰器提供元数据的支持</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
   </entry>
   <entry>
     <title>pnpm 使用</title>
-    <url>//undefined/</url>
+    <url>//1868952035/</url>
     <content><![CDATA[]]></content>
+      <tags>
+        <tag>pnpm</tag>
+      </tags>
   </entry>
   <entry>
-    <title>cli</title>
+    <title>Baidu serverless cli</title>
     <url>//1224102205/</url>
     <content><![CDATA[<p>工具安装</p>
 <ol>
@@ -675,6 +689,9 @@
 </li>
 </ol>
 ]]></content>
+      <tags>
+        <tag>serverless; cli</tag>
+      </tags>
   </entry>
   <entry>
     <title>fix</title>
@@ -683,6 +700,9 @@
 <p>要保持动态，只需使用：</p>
 <p>(<any>window).MyNamespace</p>
 ]]></content>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
   </entry>
   <entry>
     <title>Rollup output</title>
@@ -895,13 +915,9 @@
 </ul>
 <p><a href="https://bbs.huaweicloud.com/blogs/324355">原文地址</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>life</title>
-    <url>//432881407/</url>
-    <content><![CDATA[<p>男人的成熟只需要一瞬间<br>—– 2022.7.10 看完《人生大事》</p>
-<p>《人生大事》</p>
-]]></content>
+      <tags>
+        <tag>rollup; webpack; vite</tag>
+      </tags>
   </entry>
   <entry>
     <title>watch</title>
@@ -919,6 +935,12 @@
 <p>参考</p>
 <p><a href="https://segmentfault.com/a/1190000039916178">原文地址</a></p>
 ]]></content>
+      <categories>
+        <category>vue3</category>
+      </categories>
+      <tags>
+        <tag>vue3,watch,watchEffect</tag>
+      </tags>
   </entry>
   <entry>
     <title>d1</title>
@@ -973,33 +995,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>d0</title>
-    <url>//1720814833/</url>
-    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol>
-<li>前端项目日益复杂，功能多</li>
-<li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li>
-</ol>
-<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol>
-<li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li>
-</ol>
-<h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol>
-<li><p>建模，建模是整个ddd最重要的部分</p>
-<blockquote>
-<p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​	比如一些常见的想法：</p>
-<ol>
-<li>定义业务对象</li>
-<li>控制数据流</li>
-<li>界面渲染</li>
-<li>用户交互��染</li>
-<li>用户交互</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>d4</title>
     <url>//1643923690/</url>
     <content><![CDATA[<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><p>领域驱动设计（domain-driven-design）是软件代码的结构及语言需要符合<strong>业务领域</strong>中的习惯用法</p>
@@ -1051,6 +1046,33 @@
 <li><a href="http://qinghua.github.io/ddd/">DDD</a></li>
 </ol>
 <p>hua.github.io&#x2F;ddd&#x2F;)</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>d0</title>
+    <url>//1720814833/</url>
+    <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ol>
+<li>前端项目日益复杂，功能多</li>
+<li>业务逻辑，数据流，渲染，交互等等功能都是放在一块， 没有经过成熟的设计，杂乱无章，功能多了之后， 改一个小东西要把逻辑从头到尾都动一遍</li>
+</ol>
+<h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><ol>
+<li>是一个抽象概念一种思想，只在项目设计阶段存在，就是去划分项目每个模块的职责</li>
+</ol>
+<h3 id="核心点"><a href="#核心点" class="headerlink" title="核心点"></a>核心点</h3><ol>
+<li><p>建模，建模是整个ddd最重要的部分</p>
+<blockquote>
+<p>需要去区分一个业务中的各个概念，为不同的概念建立不同类型的模型，并且找到它们之间的关系，通过建模，建立起我们编程的基础工程，后续所有的开发，都是在这些模型的基础上完成的</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="前端建模"><a href="#前端建模" class="headerlink" title="前端建模"></a>前端建模</h3><h4 id="核心思想：分层思想（Layered-Architecture）"><a href="#核心思想：分层思想（Layered-Architecture）" class="headerlink" title="核心思想：分层思想（Layered Architecture）"></a>核心思想：分层思想（Layered Architecture）</h4><p>​	比如一些常见的想法：</p>
+<ol>
+<li>定义业务对象</li>
+<li>控制数据流</li>
+<li>界面渲染</li>
+<li>用户交互��染</li>
+<li>用户交互</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -1119,100 +1141,6 @@
 <p>除了把model和service串联起来，controller还有什么用呢？你还可以在controller内建立基于模型的交互，我称之为“无视图的交互模型”。因为对于前端应用来讲，业务除了数据逻辑之外，往往还有交互逻辑，比如“点击这个按钮之后，弹出一个对话框询问用户是否确认转账，如果用户点确认，那么执行转账”，这段交互描述里面，没有确切的告诉你弹出框应该长什么样子，用什么颜色，字体多大等等，它只描述了有关业务的交互部分，这个部分与布局和样式无关，是纯粹的描述和业务相关的交互效果。得益于react的抽象能力，我们可以直接在controller中，使用jsx完成纯交互的部分，并以组件的形式作为controller的接口提供给外部使用。这样，有关业务的一切逻辑，我们就通过controller串联model和service，在一个模块内，脱离布局，完成了。完成controller之后，我们才开始布局开发，布局开发也就是react组件的日常开发，由于我们在controller中导出了交互组件，而这些交互组件已经涵盖了大部分业务逻辑，所以，我们可以做到布局组件和业务无关，是纯粹的布局和样式。</p>
 <p>基于这样的设计，我们在后续的开发中，还可以加入一些特殊的逻辑，例如，我们一个业务模块，可能在PC端也可能在手机端使用，那么，此时，我们只需要重写布局组件，而无需再写业务逻辑相关的代码。更多的思想，需要你更深入的了解nautil，以及尝试使用它作为主力开发工具之后，慢慢体会。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文虽然标题是谈如何打造前端的模块代码，但本质上，详细的阐述了我关于DDD的思想的理解，以及自己在DDD的思想基础上构建的一套代码管理范式，并且以前端框架的形式组织起来。我相信，如果你也是在编写复杂的业务系统，并且遇到一些瓶颈的话，一定能从本文中有所收获。当然，由于前端的特殊性，我们不能照搬DDD，需要有所变通。我写框架，也只是一种探索，并不代表它是唯一的一种形态。随着产业互联网时代的到来，前端逐渐从大众型交互应用，转向企业型业务系统应用，这是大势所趋，也是所谓“互联网下半场”前端立足之本。本文抛砖引玉，相信站在前端的角度去看待复杂业务（专有领域）的研究会越来越多。究会越来越多。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>学习计划</title>
-    <url>//1579271507/</url>
-    <content><![CDATA[<p>xie</p>
-<span id="more"></span>
-<ul>
-<li><p><input disabled="" type="checkbox"> 
-8.22</p>
-<ul>
-<li><input disabled="" type="checkbox"> JS第七章</li>
-<li><input disabled="" type="checkbox"> Vue（一期）：	第十五章项目实战-页面骨架开发（60min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.23</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第十六章 -head组件开发 </li>
-<li><input disabled="" type="checkbox"> 1-2（20min） 3-8（70min） 9-16（90min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.24</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第十七章 -goods商品列表开发 1-5（50min） 6-8（40min） 9-14（70min）15-17（35min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.25</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第十七章 -goods商品列表开发 18-20（30min） 21-24（50min）</li>
-<li><input disabled="" type="checkbox"> 第十八章 -food商品详情页实现 1-5（60min） 6-11（70min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.26</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第十八章 -food商品详情页实现 12-17（50min） 12-17（50min）</li>
-<li><input disabled="" type="checkbox"> 第十九章 -ratings评价列表页实现 1-3（35min） 4-6（40min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.27</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第二十章 -seller商家详情页实现 1-4（35min） 5-7（30min） 8-11（45min）</li>
-<li><input disabled="" type="checkbox"> 第二十一章 项目编译打包（15min）</li>
-<li><input disabled="" type="checkbox"> 第二十二章 课程总结（5min）</li>
-<li><input disabled="" type="checkbox"> 第二十三章 Vue.js1.0向2.0升级（30min）</li>
-<li><input disabled="" type="checkbox"> 第一章 课程导学（10min）</li>
-<li><input disabled="" type="checkbox"> 第二章 项目准备工作（25min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.28</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第三章 头部组件开发（30min）</li>
-<li><input disabled="" type="checkbox"> 第四章 Tab组件开发（30min）</li>
-<li><input disabled="" type="checkbox"> 第五章 项目准备工作 1-3（25min） 4-5（35min） 6-7（40min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.29</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第五章 项目准备工作 8-9（30min）</li>
-<li><input disabled="" type="checkbox"> 第六章 商品详情页开发（50min）</li>
-<li><input disabled="" type="checkbox"> 第七章 评价和商家页面开发（45min）</li>
-<li><input disabled="" type="checkbox"> 第八章 create-api原理分析（40min）</li>
-</ul>
-</li>
-<li><p><input disabled="" type="checkbox"> 
-8.30</p>
-<ul>
-<li><input disabled="" type="checkbox"> 第九章 打包构建和项目部署（55min）</li>
-<li><input disabled="" type="checkbox"> 第十章 课程总结（10min）</li>
-</ul>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>798</title>
-    <url>//4175634211/</url>
-    <content><![CDATA[<p>798</p>
-<span id="more"></span>
-<p><img src="/images/D850/play_798_2021/play_79801.jpg" alt="play_79801"><br><img src="/images/D850/play_798_2021/play_79802.jpg" alt="play_79802"><br><img src="/images/D850/play_798_2021/play_79803.jpg" alt="play_79803"><br><img src="/images/D850/play_798_2021/play_79804.jpg" alt="play_79804"><br><img src="/images/D850/play_798_2021/play_79805.jpg" alt="play_79805"><br><img src="/images/D850/play_798_2021/play_79806.jpg" alt="play_79806"><br><img src="/images/D850/play_798_2021/play_79807.jpg" alt="play_79807"><br><img src="/images/D850/play_798_2021/play_79808.jpg" alt="play_79808"><br><img src="/images/D850/play_798_2021/play_79809.jpg" alt="play_79809"><br><img src="/images/D850/play_798_2021/play_79810.jpg" alt="play_79810"><br><img src="/images/D850/play_798_2021/play_79811.jpg" alt="play_79811"><br><img src="/images/D850/play_798_2021/play_79812.jpg" alt="play_79812"><br><img src="/images/D850/play_798_2021/play_79813.jpg" alt="play_79813"><br><img src="/images/D850/play_798_2021/play_79814.jpg" alt="play_79814"><br><img src="/images/D850/play_798_2021/play_79815.jpg" alt="play_79815"><br><img src="/images/D850/play_798_2021/play_79816.jpg" alt="play_79816"><br><img src="/images/D850/play_798_2021/play_79817.jpg" alt="play_79817"><br><img src="/images/D850/play_798_2021/play_79818.jpg" alt="play_79818"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>iig</title>
-    <url>//3752725928/</url>
-    <content><![CDATA[<p>IIG</p>
-<span id="more"></span>
-<p>2021年8月16年中总结<br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig01.jpg" alt="iqiyi_iig01"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig02.jpg" alt="iqiyi_iig02"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig03.jpg" alt="iqiyi_iig03"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig04.jpg" alt="iqiyi_iig04"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig05.jpg" alt="iqiyi_iig05"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig06.jpg" alt="iqiyi_iig06"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig07.jpg" alt="iqiyi_iig07"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig08.jpg" alt="iqiyi_iig08"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig09.jpg" alt="iqiyi_iig09"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig10.jpg" alt="iqiyi_iig10"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig11.jpg" alt="iqiyi_iig11"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig12.jpg" alt="iqiyi_iig12"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig13.jpg" alt="iqiyi_iig13"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig14.jpg" alt="iqiyi_iig14"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig15.jpg" alt="iqiyi_iig15"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig16.jpg" alt="iqiyi_iig16"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig17.jpg" alt="iqiyi_iig17"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig18.jpg" alt="iqiyi_iig18"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig19.jpg" alt="iqiyi_iig19"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig20.jpg" alt="iqiyi_iig20"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig21.jpg" alt="iqiyi_iig21"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig22.jpg" alt="iqiyi_iig22"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig23.jpg" alt="iqiyi_iig23"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig24.jpg" alt="iqiyi_iig24"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig25.jpg" alt="iqiyi_iig25"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig26.jpg" alt="iqiyi_iig26"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig27.jpg" alt="iqiyi_iig27"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig28.jpg" alt="iqiyi_iig28"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig29.jpg" alt="iqiyi_iig29"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig30.jpg" alt="iqiyi_iig30"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig31.jpg" alt="iqiyi_iig31"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig32.jpg" alt="iqiyi_iig32"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig33.jpg" alt="iqiyi_iig33"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig34.jpg" alt="iqiyi_iig34"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig35.jpg" alt="iqiyi_iig35"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig36.jpg" alt="iqiyi_iig36"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig37.jpg" alt="iqiyi_iig37"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig38.jpg" alt="iqiyi_iig38"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig39.jpg" alt="iqiyi_iig39"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig40.jpg" alt="iqiyi_iig40"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig41.jpg" alt="iqiyi_iig41"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig42.jpg" alt="iqiyi_iig42"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig43.jpg" alt="iqiyi_iig43"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig44.jpg" alt="iqiyi_iig44"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig45.jpg" alt="iqiyi_iig45"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig46.jpg" alt="iqiyi_iig46"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig47.jpg" alt="iqiyi_iig47"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig48.jpg" alt="iqiyi_iig48"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig49.jpg" alt="iqiyi_iig49"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig50.jpg" alt="iqiyi_iig50"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig51.jpg" alt="iqiyi_iig51"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig52.jpg" alt="iqiyi_iig52"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig53.jpg" alt="iqiyi_iig53"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig54.jpg" alt="iqiyi_iig54"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig55.jpg" alt="iqiyi_iig55"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig56.jpg" alt="iqiyi_iig56"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig57.jpg" alt="iqiyi_iig57"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig58.jpg" alt="iqiyi_iig58"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig59.jpg" alt="iqiyi_iig59"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig60.jpg" alt="iqiyi_iig60"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig61.jpg" alt="iqiyi_iig61"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig62.jpg" alt="iqiyi_iig62"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig63.jpg" alt="iqiyi_iig63"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig64.jpg" alt="iqiyi_iig64"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig65.jpg" alt="iqiyi_iig65"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig66.jpg" alt="iqiyi_iig66"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig67.jpg" alt="iqiyi_iig67"><br><img src="/images/D850/iqiyi_iig_2021/iqiyi_iig68.jpg" alt="iqiyi_iig68"></p>
 ]]></content>
   </entry>
   <entry>
@@ -2970,7 +2898,7 @@
   </entry>
   <entry>
     <title>崇礼太舞滑雪</title>
-    <url>//thaiwooski/</url>
+    <url>//ski/</url>
     <content><![CDATA[<p>今天运气特别好，第一趟缆车就在车上碰到了刘哥</p>
 <p>这次滑雪学习了平行转弯跟走刃</p>
 <span id="more"></span>
@@ -3011,16 +2939,6 @@
 </ol>
 </li>
 </ol>
-<p>最后来一组图片</p>
-<p><img src="/images/taihooski/IMG_0.jpg" alt="IMG_0"></p>
-<p><img src="/images/taihooski/IMG_1.jpg" alt="IMG_1"></p>
-<p><img src="/images/taihooski/IMG_2.jpg" alt="IMG_2"></p>
-<p><img src="/images/taihooski/IMG_3.jpg" alt="IMG_3"></p>
-<p><img src="/images/taihooski/IMG_4.jpg" alt="IMG_4"></p>
-<p><img src="/images/taihooski/IMG_5.jpg" alt="IMG_5"></p>
-<p><img src="/images/taihooski/IMG_6.jpg" alt="IMG_6"></p>
-<p><img src="/images/taihooski/IMG_7.jpg" alt="IMG_7"></p>
-<p><img src="/images/taihooski/IMG_8.jpg" alt="IMG_8"></p>
 ]]></content>
       <tags>
         <tag>ski</tag>
