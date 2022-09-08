@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>前端架构(四):MVC 的不足与Flux的崛起 | Lee Blog</title><meta name="keywords" content="前端架构,前端基础"><meta name="author" content="李鹏辉,ahuinet@163.com"><meta name="copyright" content="李鹏辉"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MVC 的不足事件在前几篇中，我演示了一个前端 Backbone.js MVC 框架用于解决实际问题的例子。但 MVC 依然存在几个问题  不可预测：当一个事件发生之后，你并不知道会有谁响应这个事件，是单个对象还是多个对象会响应这个事件 级联修改：当一个事件发生之后，A 组件在接收到事件之后在响应的过程中，还可能发出其他的事件触发后续的修改，你并不知道这个事件会在何处结束，会造成什么样的结果。这也">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端架构(四):MVC 的不足与Flux的崛起">
+<meta property="og:url" content="https://leejs.cn/332eb1f6/index.html">
+<meta property="og:site_name" content="Lee Blog">
+<meta property="og:description" content="MVC 的不足事件在前几篇中，我演示了一个前端 Backbone.js MVC 框架用于解决实际问题的例子。但 MVC 依然存在几个问题  不可预测：当一个事件发生之后，你并不知道会有谁响应这个事件，是单个对象还是多个对象会响应这个事件 级联修改：当一个事件发生之后，A 组件在接收到事件之后在响应的过程中，还可能发出其他的事件触发后续的修改，你并不知道这个事件会在何处结束，会造成什么样的结果。这也">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-origin.wallwiz.link/59c1366e8ac7580001cec0fd_1">
+<meta property="article:published_time" content="2022-09-08T02:12:19.000Z">
+<meta property="article:modified_time" content="2022-09-08T02:17:08.906Z">
+<meta property="article:author" content="李鹏辉">
+<meta property="article:tag" content="前端架构">
+<meta property="article:tag" content="前端基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-origin.wallwiz.link/59c1366e8ac7580001cec0fd_1"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://leejs.cn/332eb1f6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端架构(四):MVC 的不足与Flux的崛起',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-08 10:17:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> Media</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images-origin.wallwiz.link/59c1366e8ac7580001cec0fd_1')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Lee Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> Media</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-image"></i><span> Gallery</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前端架构(四):MVC 的不足与Flux的崛起</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-08T02:12:19.000Z" title="发表于 2022-09-08 10:12:19">2022-09-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-08T02:17:08.906Z" title="更新于 2022-09-08 10:17:08">2022-09-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/">前端架构</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前端架构(四):MVC 的不足与Flux的崛起"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="MVC-的不足"><a href="#MVC-的不足" class="headerlink" title="MVC 的不足"></a>MVC 的不足</h2><h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>在前几篇中，我演示了一个前端 Backbone.js MVC 框架用于解决实际问题的例子。但 MVC 依然存在几个问题</p>
+<ul>
+<li>不可预测：当一个事件发生之后，你并不知道会有谁响应这个事件，是单个对象还是多个对象会响应这个事件</li>
+<li>级联修改：当一个事件发生之后，A 组件在接收到事件之后在响应的过程中，还可能发出其他的事件触发后续的修改，你并不知道这个事件会在何处结束，会造成什么样的结果。这也和上一条「不可预测」相对应</li>
+<li>响应顺序：如果存在多个对象响应同一个事件的话，有时候对响应的顺序是有要求的，某些变更不可以出现在其他的变更之前</li>
+<li>有条件响应：对于传播方而言，并非希望所有的时间都一视同仁的广播出去；对于消费方而言，也并不希望一视同仁的响应所有的事件</li>
+</ul>
+<p>你可能会认为事件机制存在的问题是否只存在于 Backbone.js 中，那 AngularJS 这个 MVC 框架会不会好一些呢？</p>
+<p>首先 AngularJS（AngularJS 代指 1.x 版本，Angular 代指 2 以及之后的版本） 框架中也支持全局的事件机制，比如 <code>$broadcast</code>,<code>$emit</code> 等等。这样的事件机制支持变化从 <code>$rootScope</code> 向各个 contoller 的 <code>$scope</code> 广播全局的变化。如果你对 scope 这个概念不熟悉的话，可以把它理解为模块内部的作用域。</p>
+<p><img src="https://www.v2think.com/images/fe_arch_004_flux_rise/broadcast-emit-angularjs.png" alt="img"></p>
+<h3 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h3><p>AngularJS 更重大的缺陷在于它的双向绑定机制，或者说是双向数据流 (bidirection data flow) 。也就是说 A 可以把变量传递给 B，当 B 修改这个变量之后，A 中对应的变量值也会发生修改。咋听之下似乎是非常方便的机制，例如在表单这个场景中会非常实用，但是它存在一些隐患。我们以下图中的这个场景为例：</p>
+<p><img src="https://www.v2think.com/images/fe_arch_004_flux_rise/angularjs_bidirection.png" alt="img"></p>
+<ol>
+<li>Parent Controller 把某个变量以双向绑定的机制传递给 Child A Controller</li>
+<li>此时用户在界面上对这个变量值进行了修改</li>
+<li>因为双向绑定的缘故这个值同步到了 Parent Controller 中</li>
+<li>同时 Child B Contoller 和 Parent Controller 也通过双向绑定把值同步到了 Child B 中，此时 Child B 中的值也发生了修改</li>
+</ol>
+<p>也就是说，当你修改 Child A 中的一个值时，你会影响到 Child B 中的值。这样的副作用是危险的，除非你对整个系统里用到这个值的地方了如指掌，否则你极有可能影响到你不愿意被你影响到的地方。</p>
+<p>如果 Child A 和 Child B 属于不同的开发人员进行开发, 那么 Child B 的开发人员在排查这个问题是会非常困难，因为站在他的视角上而言，他只知道这个值来自于 Parent Controller，但是这个值又被哪些地方消费了，哪些地方修改了他并不知道。在框架机制内不支持这样的追溯。此时你只能保佑关于这个变量有一个 setter 方法，又或者通过 IDE 的查找功能在代码里全局搜索用到这个变量的地方</p>
+<h3 id="职责不明确"><a href="#职责不明确" class="headerlink" title="职责不明确"></a>职责不明确</h3><p>回忆一下我在第二篇中列举的 Backbone.js 和 AngularJS 实现的例子，无论是 view 文件还是 controller 文件，其它们的职责并不明确，他们同时在负责好几件事情：</p>
+<ul>
+<li>管理 view model，例如负责保存和清空用户输入的值</li>
+<li>协调用户流程，例如首先将用户输入值清空，然后提交新数据，再刷新数据列表</li>
+<li>负责为不同的 dom 元素绑定事件处理函数</li>
+</ul>
+<p>不说大道理，和当下的 React 或者 Angular 组件相比，直接后果是这些模块是无法复用的。如果我想重复使用一个 view 的话，我需要保证我的页面模版里有相同的 id 的元素，又必须保证上下文中有相同 model 层提供相同的借口或者广播相同的事件。关于多职责的坏处在上一篇中已经聊过，就不赘述了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>批评不等于否定。事件机制依然是我们许多问题里可选的解决方案之一；Backbone.js 和 AngularJS 放在现在看也依然是优秀的解决框架，但不是最优解而已。</p>
+<p>我个人认为问题在于当下我们解决的问题和过去比发生了许多的变化，随着浏览器能力不断增强，前端需要解决的问题也变得越来越复杂，团队规模也逐渐扩大。如果以 React 步入公众视野的 2014 为节点的话（我以）。2014 年以前我们的开发主要集中在类似于 widget &#x2F; plugin 级别的功能上；而在 2014 年之后应用级别的功能慢慢变得普及起来。</p>
+<p>如果你对比 2014 年以后和之后流行或者崛起的那些框架，你就会感受到其中的微妙之处：</p>
+<ul>
+<li>2014 年前：jQuery, Bootstrap, RequireJS, Kissy, Handlebars</li>
+<li>2014 年后：Redux, Ngrx, Mobx, Akita, Ngxs</li>
+</ul>
+<p>前者倾向于碎片化，各司其职的辅助性的功能；后者倾向于应用级别的数据管理</p>
+<p>事件机制和双向绑定更适用于小规模的范围内，随着应用级别不断扩大，副作用的带来负面效用会变得越来越明显。</p>
+<h2 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h2><p>我把所有与 Flux 相似的框架在这里都称之为 Flux。包括但不限于：Redux，Mobx，Ngrx，Akita，React 等等。在我看来它们都拥有和 Flux 相同的特征：</p>
+<ul>
+<li>单向数据流</li>
+<li>全局状态管理</li>
+<li>store &#x2F; selector &#x2F; service 等概念的抽象</li>
+</ul>
+<p>在谈论 Flux 之前我们先给 Flux 定一个性：Flux 是成功的吗？</p>
+<p>当然是，如今不计其数的网站也应用在使用 React 和 Flux；并且就像我上面提到的，即使是六年以后，在它之后的框架绝大部分是它的追随者而非颠覆者，都能找到 Flux 的影子。但在它诞生之初，无论是在 <a target="_blank" rel="noopener" href="https://www.reddit.com/r/programming/comments/25nrb5/facebook_mvc_does_not_scale_use_flux_instead/">Reddit</a>, <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=nYkdrAPrdcw">Youtube</a>，还是 InfoQ 上甚至至今为止都有批评的声音，</p>
+<p>但在你的那些使用了 Flux 的项目中，有多少项目在可维护性上是成功的？如何定义可维护性呢，我们用 Uncle Bob 的三个标准来回答这一个问题：</p>
+<blockquote>
+<ul>
+<li><p>It is hard to change because every change affects too many other parts of the system.(Rigidity)</p>
+</li>
+<li><p>When you make a change, unexpected parts of the system break. (Fragility)</p>
+</li>
+<li><p>It is hard to reuse in another application because it cannot be disentangled from the current application. (Immobility)</p>
+<p>—— <a target="_blank" rel="noopener" href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">The Principles of OOD</a></p>
+</li>
+</ul>
+</blockquote>
+<p>我相信答案在各位心中已经呼之欲出了。站在工程师的角度上看项目代码的可维护性并不取决于你使用的框架多么的先进，而是取决于使用框架的<strong>人</strong>和内部的工程师<strong>文化</strong></p>
+<p>扯远了，说回 Flux。</p>
+<p>在这里我不会再聊 Flux 的那些基本入门概念。我们重点说一说 Flux 解决的问题，帮助你更好的理解 Flux</p>
+<p>不知道有多少人看过 Flux 走向公众视野的第一个视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=nYkdrAPrdcw">Hacker Way: Rethinking Web App Development at Facebook</a> ，这个视频上透露了很多有助于关于我们理解 Flux 的很多信息。这一节的内容不少复述自该视频</p>
+<p>首先要强调的是，Flux 并非是为了颠覆和创新而生，而是为了解决我们所说的非功能性需求。</p>
+<p>在 Facebook 公司内部工程师需要保证交付软件的质量，但是高质量意味着需要花费更多的时间；但另一方面公司也希望崇尚 move fast 的核心价值，也就是要用更少的时间交付更多的价值，于是这两者间似乎产生了矛盾，如何用更少的时间交付更高质量的软件。</p>
+<p>用视频中的原话说，按照顺序他们想达成的目标是</p>
+<ul>
+<li>Produce higher (quality) code</li>
+<li>Higher quality software</li>
+<li>Better code by default</li>
+<li>We want to do it in less time</li>
+</ul>
+<p><img src="https://www.v2think.com/images/fe_arch_004_flux_rise/less_time_high_quality.png" alt="img"></p>
+<p>其中有意思的是第三点：「Better code by default」。在我看来这就是我在第一篇中强调的 「Falling Into The Pit of Success」有异曲同工之妙（你也可以说我现在眼里只有锤子看什么都是钉子）——你要让你的开发人员一开始（容易）就写出对的代码。</p>
+<p>而在他们的项目中最大的阻碍竟然是 MVC 架构</p>
+<p>整个宣讲 Flux 过程中最令人诟病的就是这一张图，在我上面提到的批评声音中，最共同的声音就是它们以一种错误的方式实施了 MVC，所以才导致了他们的应用无法拓展。时候演讲者 Jing Chen 也<a target="_blank" rel="noopener" href="https://www.reddit.com/r/programming/comments/25nrb5/facebook_mvc_does_not_scale_use_flux_instead/">承认演示中的图片确实投机取巧了。它们真正想表达的是这种双向的数据流架构会产生一定的负面效应</a>。</p>
+<p><img src="https://www.v2think.com/images/fe_arch_004_flux_rise/facebook_mvc.png" alt="img"></p>
+<p>首先就像我在前几篇中提到的那样，从客户端到后端到前端并没有“标准的 MVC” 一说。即使你只在前端领域内寻找统一的 MVC 概念，你也会发现从 Backbone.js, AngularJS 到 Ember.js 的实现各不相同。</p>
+<p>正因为大家对 MVC 的理解各不相同，甚至在同一个框架内也没有推荐的最佳实践，于是你会看到在一个框架内解决一个问题的不同实现。其中有一些方案是存在隐患的，但是在小规模的应用内很难暴露出来。但随着团队的扩充和复用代码的越来越多，代码会变得越来越脆弱，因为不同人看到同一份代码的理解是不同的。上图中的情况是非常有可能发生的，但并非是按照上图一模一样的方式，但后果就是跨职责和意料之外的级联更新。</p>
+<p>如果你现在站在开发 React 应用的体验上看 Backbone.js 和 AngularJS 的开发体验，你会感觉框架带来的约束是松散的。以 AngularJS 为例，它赋予了你 controller &#x2F; view 机制，但至于是在多个 view 之间共享 controller，又或者相对于一个 view 嵌套多层 controller，它完全不做任何的限制。这就极易产生上述后果。在下图中 View C 可以访问和修改多个祖先 controller 中的变量（左侧黄色箭头）同时变量又有可能会被 View B 和 View C 使用（右侧蓝色箭头）。</p>
+<p><img src="https://www.v2think.com/images/fe_arch_004_flux_rise/angularjs_nest_controllers.png" alt="img"></p>
+<p>所以你现在理解了为什么 Flux 会尝试用单向数据流解决这个问题了。我们抽取 store 来保证唯一数据源（single source of truth），所有的业务逻辑也都封装在 store 中，避免了用例和服务层（对应后端 service layer）方法散落在各个 controller 中。注意 store 层工作是不会引起任何的副作用的，在 store 完成上一个 action 的工作之前，不会有其他的 action 再次经过 dispatch 达到 store。同时使用 command 模式来避免事件机制造成的的不可预测性。剩下的具体概念你应该非常熟悉了</p>
+<p>现在回过头再看 Flux，它其实是一个非常强约束的框架。假设你需要完成一项工作，比如接住后端传递的用户信息里的新增字段，你会非常明确的知道你需要修改 store, 该 view，而不需要修改 action。到了在 store 中新增字段的这一个环节，无论是你是使用 Redux 还是 Mobx 相信你都能迅速的找到对应的 model &#x2F; reducer 在哪。我想这就是 期望中的 「Better code by default」 吧</p>
+<h2 id="简单聊框架的约束"><a href="#简单聊框架的约束" class="headerlink" title="简单聊框架的约束"></a>简单聊框架的约束</h2><p>就像我一开始提到的，目前的框架倾向于为你提供应用级别的整套解决方案。并且极其详细的为你划分模块。最初我们只有 model, controller 和 view；但现在我们有 component, store &#x2F; reducer, action, dispatch, selector &#x2F; query, reducer, service, effect, 甚至在有的框架中还有更细化的 entity store, entity query。所以当你现在需要开发一个功能时，你能够很轻易的把你的需求拆解为对应的模块，分别把它们开发、测试完毕之后接入应用即可。</p>
+<p>有人认为如此强的职责划分和框架约束扼杀了编程的创造力和乐趣。但我认为工业化的代码产出稳定和高效才是最重要的。</p>
+<p>现代的前端技术栈已经变得非常复杂了，「精通」已经成为了一件奢侈的事，更别说让整个团队达到相同的「精通」水平。如果你开发的是 Angular 应用，Angular 本身,或是 Rxjs 又或是 TypeScript 哪一个单拎出来都不好对付，指望着人们自我学习或者培训的方式统一大家的水平更是天方夜谭。目前看来「约束」看起来是最简单也是最靠谱的方式。这种约束体现的不仅是在模块的明码<del>标价</del>设计上，还可以体现在使用 lint，TypeScript 等语法的约束上</p>
+<p>原文出处： <a target="_blank" rel="noopener" href="https://www.v2think.com/fe-arch-004-flux-rise">https://www.v2think.com/fe-arch-004-flux-rise</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://leejs.cn">李鹏辉</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://leejs.cn/332eb1f6/">https://leejs.cn/332eb1f6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://leejs.cn" target="_blank">Lee Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/">前端架构</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/">前端基础</a></div><div class="post_share"><div class="social-share" data-image="https://images-origin.wallwiz.link/59c1366e8ac7580001cec0fd_1" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/a49a5e85/"><img class="prev-cover" src="https://images-origin.wallwiz.link/588609686e9f6a00013b8c2f_1" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前端架构(五): 从Flux进化到MVP</div></div></a></div><div class="next-post pull-right"><a href="/de7bba25/"><img class="next-cover" src="https://images-origin.wallwiz.link/59c13437ccb8f80001ef65ea_1" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">前端架构(三):MVC 启示录：模块的职责，作用域和通信</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/df16bcfd/" title="前端架构(一):初识前端架构"><img class="cover" src="https://images-origin.wallwiz.link/58860ba7dc1d3f00010acdef_1" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">前端架构(一):初识前端架构</div></div></a></div><div><a href="/de7bba25/" title="前端架构(三):MVC 启示录：模块的职责，作用域和通信"><img class="cover" src="https://images-origin.wallwiz.link/59c13437ccb8f80001ef65ea_1" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">前端架构(三):MVC 启示录：模块的职责，作用域和通信</div></div></a></div><div><a href="/a49a5e85/" title="前端架构(五): 从Flux进化到MVP"><img class="cover" src="https://images-origin.wallwiz.link/588609686e9f6a00013b8c2f_1" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">前端架构(五): 从Flux进化到MVP</div></div></a></div><div><a href="/3fb0c879/" title="前端架构(六): 整洁架构"><img class="cover" src="https://images-origin.wallwiz.link/58860adbdc1d3f00010accc9_1" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">前端架构(六): 整洁架构</div></div></a></div><div><a href="/14f37a70/" title="前端架构(二):MVC初探"><img class="cover" src="https://images-origin.wallwiz.link/59c13323c6a7580001cc9bfd_1" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">前端架构(二):MVC初探</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">李鹏辉</div><div class="author-info__description">学习 生活 成长</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MVC-%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="toc-number">1.</span> <span class="toc-text">MVC 的不足</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="toc-number">1.2.</span> <span class="toc-text">双向绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%8C%E8%B4%A3%E4%B8%8D%E6%98%8E%E7%A1%AE"><span class="toc-number">1.3.</span> <span class="toc-text">职责不明确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flux"><span class="toc-number">2.</span> <span class="toc-text">Flux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%81%8A%E6%A1%86%E6%9E%B6%E7%9A%84%E7%BA%A6%E6%9D%9F"><span class="toc-number">3.</span> <span class="toc-text">简单聊框架的约束</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/3fb0c879/" title="前端架构(六): 整洁架构"><img src="https://images-origin.wallwiz.link/58860adbdc1d3f00010accc9_1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端架构(六): 整洁架构"/></a><div class="content"><a class="title" href="/3fb0c879/" title="前端架构(六): 整洁架构">前端架构(六): 整洁架构</a><time datetime="2022-09-08T02:13:24.000Z" title="发表于 2022-09-08 10:13:24">2022-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/a49a5e85/" title="前端架构(五): 从Flux进化到MVP"><img src="https://images-origin.wallwiz.link/588609686e9f6a00013b8c2f_1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端架构(五): 从Flux进化到MVP"/></a><div class="content"><a class="title" href="/a49a5e85/" title="前端架构(五): 从Flux进化到MVP">前端架构(五): 从Flux进化到MVP</a><time datetime="2022-09-08T02:12:53.000Z" title="发表于 2022-09-08 10:12:53">2022-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/332eb1f6/" title="前端架构(四):MVC 的不足与Flux的崛起"><img src="https://images-origin.wallwiz.link/59c1366e8ac7580001cec0fd_1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端架构(四):MVC 的不足与Flux的崛起"/></a><div class="content"><a class="title" href="/332eb1f6/" title="前端架构(四):MVC 的不足与Flux的崛起">前端架构(四):MVC 的不足与Flux的崛起</a><time datetime="2022-09-08T02:12:19.000Z" title="发表于 2022-09-08 10:12:19">2022-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/de7bba25/" title="前端架构(三):MVC 启示录：模块的职责，作用域和通信"><img src="https://images-origin.wallwiz.link/59c13437ccb8f80001ef65ea_1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端架构(三):MVC 启示录：模块的职责，作用域和通信"/></a><div class="content"><a class="title" href="/de7bba25/" title="前端架构(三):MVC 启示录：模块的职责，作用域和通信">前端架构(三):MVC 启示录：模块的职责，作用域和通信</a><time datetime="2022-09-08T01:44:11.000Z" title="发表于 2022-09-08 09:44:11">2022-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/14f37a70/" title="前端架构(二):MVC初探"><img src="https://images-origin.wallwiz.link/59c13323c6a7580001cc9bfd_1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端架构(二):MVC初探"/></a><div class="content"><a class="title" href="/14f37a70/" title="前端架构(二):MVC初探">前端架构(二):MVC初探</a><time datetime="2022-09-08T01:37:09.000Z" title="发表于 2022-09-08 09:37:09">2022-09-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 李鹏辉</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
